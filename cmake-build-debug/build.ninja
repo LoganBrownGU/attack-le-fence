@@ -61,6 +61,12 @@ build CMakeFiles/attack_le_fence.dir/Card.cpp.o: CXX_COMPILER__attack_le_fence_u
   OBJECT_DIR = CMakeFiles/attack_le_fence.dir
   OBJECT_FILE_DIR = CMakeFiles/attack_le_fence.dir
 
+build CMakeFiles/attack_le_fence.dir/IPlayer.cpp.o: CXX_COMPILER__attack_le_fence_unscanned_Debug /home/logan/Documents/Personal/cpp-projects/attack-le-fence/IPlayer.cpp || cmake_object_order_depends_target_attack_le_fence
+  DEP_FILE = CMakeFiles/attack_le_fence.dir/IPlayer.cpp.o.d
+  FLAGS = -g -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles/attack_le_fence.dir
+  OBJECT_FILE_DIR = CMakeFiles/attack_le_fence.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target attack_le_fence
@@ -69,7 +75,7 @@ build CMakeFiles/attack_le_fence.dir/Card.cpp.o: CXX_COMPILER__attack_le_fence_u
 #############################################
 # Link the executable attack_le_fence
 
-build attack_le_fence: CXX_EXECUTABLE_LINKER__attack_le_fence_Debug CMakeFiles/attack_le_fence.dir/main.cpp.o CMakeFiles/attack_le_fence.dir/Card.cpp.o
+build attack_le_fence: CXX_EXECUTABLE_LINKER__attack_le_fence_Debug CMakeFiles/attack_le_fence.dir/main.cpp.o CMakeFiles/attack_le_fence.dir/Card.cpp.o CMakeFiles/attack_le_fence.dir/IPlayer.cpp.o
   FLAGS = -g
   OBJECT_DIR = CMakeFiles/attack_le_fence.dir
   POST_BUILD = :
