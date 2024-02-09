@@ -7,4 +7,6 @@ add_executable(attack_le_fence main.cpp
         Card.cpp
         Card.h
         Player.h
-        Player.cpp)
+        Player.cpp
+        CardFactory.cpp
+        CardFactory.h)
