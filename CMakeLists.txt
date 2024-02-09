@@ -6,5 +6,5 @@ set(CMAKE_CXX_STANDARD 17)
 add_executable(attack_le_fence main.cpp
         Card.cpp
         Card.h
-        IPlayer.cpp
-        IPlayer.h)
+        Player.h
+        Player.cpp)
