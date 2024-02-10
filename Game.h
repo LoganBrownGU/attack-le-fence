@@ -8,7 +8,7 @@
 
 #include <vector>
 #include "Card.h"
-#include "Player.h"
+#include "player/Player.h"
 
 class Game {
 

@@ -14,9 +14,9 @@ Game::Game(std::vector<PlayerType> *players) {
         switch (playerType) {
             case BOT:
                 break;
-            case LOCAL:
+            case LOCAL_CLI:
                 break;
-            case REMOTE:
+            case REMOTE_CLI:
                 break;
         }
     }

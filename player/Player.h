@@ -18,8 +18,8 @@ enum Action {
 
 enum PlayerType {
     BOT,
-    LOCAL,
-    REMOTE
+    LOCAL_CLI,
+    REMOTE_CLI
 };
 
 class Player {
@@ -36,7 +36,7 @@ public:
 
     Card *playStashed();
 
-private:
+protected:
     // IMPORTANT: Player should not have ownership over any cards.
     std::vector<Card *> shield;
     std::vector<Card *> health;
