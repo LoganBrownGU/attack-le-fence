@@ -3,7 +3,9 @@
 #include "CardFactory.h"
 
 int main() {
-    std::string input;
-    std::cin >> input;
-    std::cout << (input == "a") << std::endl;
+    auto cards = CardFactory::generateNormalDeck();
+
+    for (const auto &card: *cards) {
+        std::cout << card->toString() << std::endl;
+    }
 }

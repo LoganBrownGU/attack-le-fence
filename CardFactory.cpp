@@ -6,12 +6,12 @@
 
 #include <memory>
 
-std::vector<std::unique_ptr<Card>> CardFactory::generateNormalDeck() {
-    std::vector<std::unique_ptr<Card>> cards;
+std::vector<std::unique_ptr<Card>> *CardFactory::generateNormalDeck() {
+    auto *cards = new std::vector<std::unique_ptr<Card>>;
 
     for (const auto e: Suit::All) {
         for (int i = 1; i <= 13; i++)
-            cards.push_back(std::make_unique<Card>(i, e));
+            cards->push_back(std::make_unique<Card>(i, e));
     }
 
     return cards;

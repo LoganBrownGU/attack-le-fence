@@ -12,7 +12,7 @@
 
 class CardFactory {
 public:
-    static std::vector<std::unique_ptr<Card>> generateNormalDeck();
+    static std::vector<std::unique_ptr<Card>> *generateNormalDeck();
 };
 
 
