@@ -11,9 +11,9 @@ class LocalCLIPlayer : public Player {
 public:
     Action play() override;
 
-    Player *actionOnPlayer(std::vector<Player *> vector) override;
+    Player *actionOnPlayer(std::vector<Player *> players) override;
 
-    void decideCards(std::vector<Card *> vector) override;
+    void decideCards(std::vector<Card *> cards) override;
 
 private:
     void printCards();
