@@ -21,3 +21,9 @@ Game::Game(std::vector<PlayerType> *players) {
         }
     }
 }
+
+Game::~Game() {
+    delete this->usedPile;
+    delete this->unusedPile;
+    delete this->players;
+}

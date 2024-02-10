@@ -33,11 +33,11 @@ void LocalCLIPlayer::decideCards(std::vector<Card *> vector) {
 
 void LocalCLIPlayer::printCards() {
     std::cout << "shield: ";
-    for (Card *card: this->shield)
+    for (Card *card: *this->shield)
         std::cout << card->toString() << " | ";
 
     std::cout << "\nhealth";
-    for (Card *card: this->health)
+    for (Card *card: *this->health)
         std::cout << card->toString() << " | ";
 
     std::cout << "\nstashed card: " << (this->stashedCard ? "no" : "yes") << std::endl;

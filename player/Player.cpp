@@ -13,3 +13,14 @@ Card *Player::playStashed() {
     this->stashedCard = nullptr;
     return card;
 }
+
+Player::Player() {
+    this->shield = new std::vector<Card *>;
+    this->health = new std::vector<Card *>;
+    this->stashedCard = nullptr;
+}
+
+Player::~Player() {
+    delete this->health;
+    delete this->shield;
+}

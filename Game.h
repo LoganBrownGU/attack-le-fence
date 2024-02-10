@@ -16,6 +16,7 @@ public:
     void play();
 
     Game(std::vector<PlayerType> *players);
+    ~Game();
 
 private:
     std::vector<std::unique_ptr<Card>> *unusedPile, *usedPile;
