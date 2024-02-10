@@ -9,4 +9,6 @@ add_executable(attack_le_fence main.cpp
         Player.h
         Player.cpp
         CardFactory.cpp
-        CardFactory.h)
+        CardFactory.h
+        Game.cpp
+        Game.h)

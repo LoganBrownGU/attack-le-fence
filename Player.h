@@ -16,13 +16,24 @@ enum Action {
     STASH
 };
 
+enum PlayerType {
+    BOT,
+    LOCAL,
+    REMOTE
+};
+
 class Player {
 
 public:
     virtual Action play() = 0;
+
     virtual Player *actionOnPlayer(std::vector<Player *>) = 0;
 
+    virtual void decideCards(std::vector<Card *>) = 0;
+
+
     void stashCard(Card *card);
+
     Card *playStashed();
 
 private:

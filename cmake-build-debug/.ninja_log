@@ -1,13 +1,7 @@
 # ninja log v5
-0	23	1707561988643340350	build.ninja	46cff648429e0bd3
-0	114	1707561988763339146	CMakeFiles/attack_le_fence.dir/Player.cpp.o	5fd70194e3ac305e
-0	161	1707561988811338664	CMakeFiles/attack_le_fence.dir/Card.cpp.o	7d4bb00dec9a4a8e
-1	252	1707561988899337781	CMakeFiles/attack_le_fence.dir/CardFactory.cpp.o	8e5c5dc45213db9d
-1	263	1707561988911337661	CMakeFiles/attack_le_fence.dir/main.cpp.o	a2666cba94ae2ecf
-263	317	1707561988963337139	attack_le_fence	3f5eaa4752f17433
-2	287	1707562595498221408	CMakeFiles/attack_le_fence.dir/Card.cpp.o	7d4bb00dec9a4a8e
-2	351	1707562595562220938	CMakeFiles/attack_le_fence.dir/CardFactory.cpp.o	8e5c5dc45213db9d
-1	394	1707562595606220614	CMakeFiles/attack_le_fence.dir/main.cpp.o	a2666cba94ae2ecf
-394	461	1707562595670220144	attack_le_fence	3f5eaa4752f17433
-1	225	1707562622486023748	CMakeFiles/attack_le_fence.dir/Card.cpp.o	7d4bb00dec9a4a8e
 225	271	1707562622530023427	attack_le_fence	3f5eaa4752f17433
+1	394	1707562595606220614	CMakeFiles/attack_le_fence.dir/main.cpp.o	a2666cba94ae2ecf
+2	351	1707562595562220938	CMakeFiles/attack_le_fence.dir/CardFactory.cpp.o	8e5c5dc45213db9d
+1	225	1707562622486023748	CMakeFiles/attack_le_fence.dir/Card.cpp.o	7d4bb00dec9a4a8e
+0	23	1707566157622406096	build.ninja	46cff648429e0bd3
+0	114	1707561988763339146	CMakeFiles/attack_le_fence.dir/Player.cpp.o	5fd70194e3ac305e
