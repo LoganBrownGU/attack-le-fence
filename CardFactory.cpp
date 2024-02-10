@@ -4,12 +4,14 @@
 
 #include "CardFactory.h"
 
-std::unique_ptr<std::vector<Card *>> CardFactory::generateNormalDeck() {
-    std::unique_ptr<std::vector<Card *>> cards(new std::vector<Card *>);
+#include <memory>
+
+std::vector<std::unique_ptr<Card>> CardFactory::generateNormalDeck() {
+    std::vector<std::unique_ptr<Card>> cards;
 
     for (const auto e: Suit::All) {
         for (int i = 1; i <= 13; i++)
-            cards->push_back(new Card(i, e));
+            cards.push_back(std::make_unique<Card>(i, e));
     }
 
     return cards;

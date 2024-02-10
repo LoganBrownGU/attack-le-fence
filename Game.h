@@ -13,12 +13,13 @@
 class Game {
 
 public:
-    void init(std::vector<PlayerType> players);
-
     void play();
 
+    Game(std::vector<PlayerType> *players);
+
 private:
-    std::vector<Card *> unusedPile, usedPile;
+    std::vector<std::unique_ptr<Card>> unusedPile, usedPile;
+    std::vector<std::unique_ptr<Player>> players;
 };
 
 
