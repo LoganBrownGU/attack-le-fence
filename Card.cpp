@@ -8,8 +8,12 @@ int Card::getValue() const {
     return value;
 }
 
-std::unique_ptr<Suit> *Card::getSuit() const {
-    return suit;
+Suit::Type Card::getSuit() {
+    return this->suit;
 }
 
-Card::Card(int value, std::unique_ptr<Suit> *suit) : value(value), suit(suit) {}
+Card::Card(int value, Suit::Type suit) : value(value), suit(suit) {}
+
+std::string Card::toString() {
+    return std::to_string(this->value) + " of " + Suit::values[this->suit];
+}

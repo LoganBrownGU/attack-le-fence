@@ -6,22 +6,35 @@
 #define ATTACK_LE_FENCE_CARD_H
 
 #include <memory>
+#include <string>
 
-enum Suit {HEARTS, SPADES, CLUBS, DIAMONDS};
+namespace Suit {
+    enum Type {
+        HEARTS = 0,
+        SPADES = 1,
+        CLUBS  = 2,
+        DIAMONDS = 3
+    };
+
+    static const Type All[] = {HEARTS, SPADES, CLUBS, DIAMONDS};
+    static const std::string values[] = {"hearts", "spades", "clubs", "diamonds"};
+}
 
 class Card {
 
 private:
     const int value;
-    const std::unique_ptr<Suit> *suit;
+    Suit::Type suit;
 
 public:
 
-    Card(int value, std::unique_ptr<Suit> *suit);
+    Card(int value, Suit::Type suit);
 
     [[nodiscard]] int getValue() const;
 
-    [[nodiscard]] std::unique_ptr<Suit> *getSuit() const;
+    [[nodiscard]] Suit::Type getSuit();
+
+    std::string toString();
 };
 
 

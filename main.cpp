@@ -1,6 +1,11 @@
 #include <iostream>
+#include <vector>
+#include "CardFactory.h"
 
 int main() {
-    std::cout << "Hello, World!" << std::endl;
-    return 0;
+    auto cards = CardFactory::generateNormalDeck();
+
+    for (Card *card: *cards) {
+        std::cout << card->toString() << std::endl;
+    }
 }

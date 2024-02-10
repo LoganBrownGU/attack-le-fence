@@ -5,9 +5,14 @@
 #ifndef ATTACK_LE_FENCE_CARDFACTORY_H
 #define ATTACK_LE_FENCE_CARDFACTORY_H
 
+#include <vector>
+#include <memory>
+
+#include "Card.h"
 
 class CardFactory {
-
+public:
+    static std::unique_ptr<std::vector<Card *>> generateNormalDeck();
 };
 
 
