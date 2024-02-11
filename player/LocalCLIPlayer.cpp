@@ -52,12 +52,16 @@ void LocalCLIPlayer::decideCards(std::vector<Card *> *cards) {
 
         if (card1 > 3 || card1 < 1) continue;
         this->shield->push_back(cards->at(card1));
+        cards->erase(cards->begin() + card1);
+
         if (card2 > 3 || card2 < 1) continue;
         this->shield->push_back(cards->at(card2));
+        cards->erase(cards->begin() + card2);
     }
 
-    //todo add other cards to health
-    // todo change argument to pointer
+    // Add the rest of the cards to health
+    for (const auto &card: *cards)
+        this->health->push_back(card);
 }
 
 void LocalCLIPlayer::printCards() {
