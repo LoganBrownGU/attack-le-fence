@@ -17,7 +17,7 @@ namespace Suit {
     };
 
     static const Type All[] = {HEARTS, SPADES, CLUBS, DIAMONDS};
-    static const std::string values[] = {"hearts", "spades", "clubs", "diamonds"};
+    static const std::string values[] = {"\u2665", "\u2660", "\u2663", "\u2666"};
 }
 
 class Card {
