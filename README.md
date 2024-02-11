@@ -33,3 +33,8 @@ Implementation of the classic card game "Attack Le Fence" in C++
   3. Check if any of the cards in the used pile can be used.
   4. Check if any of the cards currently in play can be used. 
   5. Check if any of the cards in the unused pile can be used.
+
+## Clarifications
+- The game treats `vector`s of cards thus:
+  - The "top" card (i.e., the one that would be on top of the deck if it were placed face up) is the **first** card in the `vector`. 
+  - The "bottom" card (i.e., the one that would be on top of the deck if it were placed face down) is the **last** card in the `vector`.

@@ -15,6 +15,7 @@ public:
     static std::vector<Card *> *generateNormalDeck();
     static void shuffleDeck(std::vector<Card *> *deck);
     static void printDeck(std::vector<Card *> *deck);
+    static std::unique_ptr<std::vector<Card *>> dealCards(std::vector<Card *> *deck, int n);
 };
 
 

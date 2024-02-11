@@ -40,3 +40,14 @@ void CardFactory::printDeck(std::vector<Card *> *deck) {
     }
     std::cout << std::endl;
 }
+
+std::unique_ptr<std::vector<Card *>> CardFactory::dealCards(std::vector<Card *> *deck, int n) {
+    auto cards = std::make_unique<std::vector<Card *>>(std::vector<Card *>());
+
+    for (int i = 0; i < n; i++) {
+        cards->push_back(deck->back());
+        deck->pop_back();
+    }
+
+    return cards;
+}

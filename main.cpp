@@ -4,8 +4,8 @@
 
 int main() {
     auto deck = CardFactory::generateNormalDeck();
+    //CardFactory::shuffleDeck(deck);
+    CardFactory::printDeck(deck);
 
-    CardFactory::printDeck(deck);
-    CardFactory::shuffleDeck(deck);
-    CardFactory::printDeck(deck);
+
 }
