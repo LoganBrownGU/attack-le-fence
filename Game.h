@@ -19,8 +19,8 @@ public:
     ~Game();
 
 private:
-    std::vector<std::unique_ptr<Card>> *unusedPile, *usedPile;
-    std::vector<std::unique_ptr<Player>> *players;
+    std::vector<Card *> *unusedPile, *usedPile;
+    std::vector<Player *> *players;
 };
 
 

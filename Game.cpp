@@ -7,7 +7,7 @@
 
 Game::Game(std::vector<PlayerType> *players) {
     this->unusedPile = CardFactory::generateNormalDeck();
-    this->usedPile = new std::vector<std::unique_ptr<Card>>;
+    this->usedPile = new std::vector<Card *>;
 
     // todo implement concrete players and write switches
     for (PlayerType playerType: *players) {

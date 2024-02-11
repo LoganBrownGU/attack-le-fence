@@ -12,7 +12,7 @@
 
 class CardFactory {
 public:
-    static std::vector<std::unique_ptr<Card>> *generateNormalDeck();
+    static std::vector<Card *> *generateNormalDeck();
     static void shuffleDeck(std::vector<Card *> *deck);
     static void printDeck(std::vector<Card *> *deck);
 };
