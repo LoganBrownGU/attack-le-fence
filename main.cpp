@@ -7,5 +7,6 @@ int main() {
     //CardFactory::shuffleDeck(deck);
     CardFactory::printDeck(deck);
 
-
+    CardFactory::printDeck(CardFactory::dealCards(deck, 3).get());
+    CardFactory::printDeck(deck);
 }
