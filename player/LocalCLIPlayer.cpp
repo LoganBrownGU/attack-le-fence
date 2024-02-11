@@ -23,14 +23,14 @@ Action LocalCLIPlayer::play() {
     }
 }
 
-Player *LocalCLIPlayer::actionOnPlayer(std::vector<Player *> players) {
+Player *LocalCLIPlayer::actionOnPlayer(std::vector<Player *> *players) {
     return nullptr;
 }
 
-void LocalCLIPlayer::decideCards(std::vector<Card *> cards) {
+void LocalCLIPlayer::decideCards(std::vector<Card *> *cards) {
     std::cout << "Your cards are: ";
     int i = 1;
-    for (const auto &card: cards)
+    for (const auto &card: *cards)
         std::cout << std::to_string(i++) << ": " << card->toString() << std::endl;
 
     while (this->shield->empty()) {
@@ -51,9 +51,9 @@ void LocalCLIPlayer::decideCards(std::vector<Card *> cards) {
         }
 
         if (card1 > 3 || card1 < 1) continue;
-        this->shield->push_back(cards.at(card1));
+        this->shield->push_back(cards->at(card1));
         if (card2 > 3 || card2 < 1) continue;
-        this->shield->push_back(cards.at(card2));
+        this->shield->push_back(cards->at(card2));
     }
 
     //todo add other cards to health

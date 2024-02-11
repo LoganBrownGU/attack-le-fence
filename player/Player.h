@@ -27,9 +27,9 @@ class Player {
 public:
     virtual Action play() = 0;
 
-    virtual Player *actionOnPlayer(std::vector<Player *> players) = 0;
+    virtual Player *actionOnPlayer(std::vector<Player *> *players) = 0;
 
-    virtual void decideCards(std::vector<Card *> cards) = 0;
+    virtual void decideCards(std::vector<Card *> *cards) = 0;
 
 
     void stashCard(Card *card);
