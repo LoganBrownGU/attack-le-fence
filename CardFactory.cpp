@@ -33,6 +33,7 @@ void CardFactory::shuffleDeck(std::vector<Card *> *deck) {
 }
 
 void CardFactory::printDeck(std::vector<Card *> *deck) {
+    if (deck->empty()) return;
     int c = 0;
     for (const auto &card: *deck) {
         std::cout << "| \t" << card->toString() << "\t";
