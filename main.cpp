@@ -1,4 +1,3 @@
-#include <iostream>
 #include <vector>
 #include "CardFactory.h"
 #include "player/LocalCLIPlayer.h"
