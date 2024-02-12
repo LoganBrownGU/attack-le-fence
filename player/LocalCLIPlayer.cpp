@@ -15,12 +15,12 @@ Action LocalCLIPlayer::play() {
 
         std::string input;
         std::cin >> input;
-        if (input == "attack")  return ATTACK;
-        if (input == "swap")    return SWAP;
-        if (input == "stash")   return STASH;
+        if (input == "attack")                      return ATTACK;
+        if (input == "swap")                        return SWAP;
+        if (input == "stash" && !this->stashedCard) return STASH;
 
         if (input == "h")
-            std::cout << "attack, swap, or stash" << std::endl;
+            std::cout << "attack, swap" << (this->stashedCard ? "" : ", stash") << std::endl;
     }
 }
 
@@ -67,23 +67,18 @@ void LocalCLIPlayer::decideCards(std::vector<Card *> *cards) {
         this->health->push_back(card);
 
     std::cout << "Your setup is: \n";
-    if (this->shield->size() == 1) {
-        std::cout << "\t" << this->shield->at(0)->toString() << std::endl << std::endl;
-        std::cout << this->health->at(0)->toString() << " | " << this->health->at(1)->toString() << std::endl;
-    } else {
-        std::cout << this->shield->at(0)->toString() << " | " << this->shield->at(1)->toString() << std::endl << std::endl;
-        std::cout << "\t" << this->health->at(0)->toString() << std::endl;
-    }
+    printCards();
+    std::cout << "\n";
 }
 
 void LocalCLIPlayer::printCards() {
     std::cout << "shield: ";
     for (Card *card: *this->shield)
-        std::cout << card->toString() << " | ";
+        std::cout << card->toString();
 
-    std::cout << "\nhealth";
+    std::cout << "\nhealth: ";
     for (Card *card: *this->health)
-        std::cout << card->toString() << " | ";
+        std::cout << card->toString();
 
-    std::cout << "\nstashed card: " << (this->stashedCard ? "no" : "yes") << std::endl;
+    std::cout << "\nstashed card: " << (this->stashedCard ? "yes" : "no") << std::endl;
 }

@@ -36,11 +36,11 @@ void CardFactory::printDeck(std::vector<Card *> *deck) {
     if (deck->empty()) return;
     int c = 0;
     for (const auto &card: *deck) {
-        std::cout << "| \t" << card->toString() << "\t";
-        if (++c % 4 == 0) std::cout << " | \n";
+        std::cout << card->toString();
+        if (++c % 4 == 0) std::cout << std::endl;
     }
 
-    if (c % 4 != 0) std::cout << "|\n";
+    if (c % 4 != 0) std::cout << std::endl;
     std::cout << std::endl;
 }
 

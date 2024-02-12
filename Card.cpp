@@ -15,5 +15,5 @@ Suit::Type Card::getSuit() {
 Card::Card(int value, Suit::Type suit) : value(value), suit(suit) {}
 
 std::string Card::toString() {
-    return std::to_string(this->value) + " of " + Suit::values[this->suit];
+    return "|  " + std::to_string(this->value) + " of "  + (this->value < 10 ? " " : "") + Suit::values[this->suit] + "  |";
 }

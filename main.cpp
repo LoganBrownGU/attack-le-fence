@@ -10,4 +10,5 @@ int main() {
 
     auto player1 = new LocalCLIPlayer();
     player1->decideCards(CardFactory::dealCards(deck, 3).get());
+    auto action = player1->play();
 }
