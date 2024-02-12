@@ -72,6 +72,8 @@ void LocalCLIPlayer::decideCards(std::vector<Card *> *cards) {
 }
 
 void LocalCLIPlayer::printCards() {
+    const std::string cardBack = "|+-+-+-+-+-+|";
+
     std::cout << "shield: ";
     for (Card *card: *this->shield)
         std::cout << card->toString();
@@ -80,5 +82,5 @@ void LocalCLIPlayer::printCards() {
     for (Card *card: *this->health)
         std::cout << card->toString();
 
-    std::cout << "\nstashed card: " << (this->stashedCard ? "yes" : "no") << std::endl;
+    std::cout << "\nstashed card: " << (this->stashedCard ? cardBack : "no") << std::endl;
 }
