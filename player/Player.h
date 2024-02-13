@@ -40,18 +40,22 @@ public:
 
     bool hasStashed();
 
-    std::vector<Card *> *getShield() const;
+    [[nodiscard]] std::vector<Card *> *getShield() const;
 
-    std::vector<Card *> *getHealth() const;
+    [[nodiscard]] std::vector<Card *> *getHealth() const;
 
     Player();
     ~Player();
 
 protected:
-    // IMPORTANT:   Player should not have ownership over any cards.
+    // IMPORTANT:   Player does not have ownership over any cards.
     //              vectors should never be replaced, only contents
-    std::vector<Card *> *shield;
-    std::vector<Card *> *health;
+
+    // vector of refs to Cards that make up the player's shield
+    const std::vector<Card *> *shield;
+    // vector of refs to Cards that make up the player's health
+    const std::vector<Card *> *health;
+    // ref to player's stashed card
     Card *stashedCard;
 };
 

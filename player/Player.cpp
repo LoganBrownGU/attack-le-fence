@@ -30,9 +30,9 @@ bool Player::hasStashed() {
 }
 
 std::vector<Card *> *Player::getShield() const {
-    return shield;
+    return const_cast<std::vector<Card *> *>(shield);
 }
 
 std::vector<Card *> *Player::getHealth() const {
-    return health;
+    return const_cast<std::vector<Card *> *>(health);
 }
