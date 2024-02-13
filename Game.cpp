@@ -46,7 +46,7 @@ void Game::play() {
                     handleSwap(player);
                     break;
                 case STASH:
-                    handleStash(player);
+                    if (!player->hasStashed()) handleStash(player);
                     break;
             }
         }
@@ -80,4 +80,9 @@ void Game::handleSwap(Player *player) {
     }
 
     shield->push_back(newShield);
+}
+
+void Game::handleStash(Player *player) {
+    player->stashCard(this->unusedPile->back());
+    this->unusedPile->pop_back();
 }
