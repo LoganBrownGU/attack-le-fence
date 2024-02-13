@@ -55,5 +55,29 @@ void Game::play() {
 
 void Game::handleAttack(Player *player) {
     const auto &attackedPlayer = player->actionOnPlayer(players);
+    bool useStashed = false;
+    if (player->hasStashed()) useStashed = player->useStashed();
 
+    // todo do attack
+}
+
+void Game::handleSwap(Player *player) {
+    const auto &swappedPlayer = player->actionOnPlayer(players);
+    auto newShield = this->unusedPile->back();
+    this->unusedPile->pop_back();
+
+    auto shield = swappedPlayer->getShield();
+    // If new shield value matches current shield value
+    if (CardFactory::totalValue(shield) == newShield->getValue()) {
+        shield->push_back(newShield);
+        return;
+    }
+
+    // Take old shield cards and put them in the used pile
+    while (!shield->empty()) {
+        this->usedPile->insert(this->usedPile->begin(), shield->back());
+        shield->pop_back();
+    }
+
+    shield->push_back(newShield);
 }

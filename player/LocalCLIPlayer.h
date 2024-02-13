@@ -15,6 +15,8 @@ public:
 
     void decideCards(std::vector<Card *> *cards) override;
 
+    bool useStashed() override;
+
 private:
     void printCards();
 };

@@ -31,16 +31,25 @@ public:
 
     virtual void decideCards(std::vector<Card *> *cards) = 0;
 
+    virtual bool useStashed() = 0;
+
 
     void stashCard(Card *card);
 
     Card *playStashed();
 
+    bool hasStashed();
+
+    std::vector<Card *> *getShield() const;
+
+    std::vector<Card *> *getHealth() const;
+
     Player();
     ~Player();
 
 protected:
-    // IMPORTANT: Player should not have ownership over any cards.
+    // IMPORTANT:   Player should not have ownership over any cards.
+    //              vectors should never be replaced, only contents
     std::vector<Card *> *shield;
     std::vector<Card *> *health;
     Card *stashedCard;

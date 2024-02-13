@@ -24,3 +24,15 @@ Player::~Player() {
     delete this->health;
     delete this->shield;
 }
+
+bool Player::hasStashed() {
+    return this->stashedCard;
+}
+
+std::vector<Card *> *Player::getShield() const {
+    return shield;
+}
+
+std::vector<Card *> *Player::getHealth() const {
+    return health;
+}

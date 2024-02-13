@@ -71,6 +71,17 @@ void LocalCLIPlayer::decideCards(std::vector<Card *> *cards) {
     std::cout << "\n";
 }
 
+bool LocalCLIPlayer::useStashed() {
+    while (true) {
+        std::cout << "Do you want to use your stashed card? (y/n): ";
+        std::string input;
+        std::cin >> input;
+
+        if (input == "y") return true;
+        if (input == "n") return false;
+    }
+}
+
 void LocalCLIPlayer::printCards() {
     const std::string cardBack = "|+-+-+-+-+-+|";
 

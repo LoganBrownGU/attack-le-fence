@@ -54,3 +54,11 @@ std::unique_ptr<std::vector<Card *>> CardFactory::dealCards(std::vector<Card *> 
 
     return cards;
 }
+
+int CardFactory::totalValue(std::vector<Card *> *deck) {
+    int total = 0;
+    for (const auto &card: *deck)
+        total += card->getValue();
+
+    return total;
+}
