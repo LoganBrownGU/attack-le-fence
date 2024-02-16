@@ -62,3 +62,16 @@ int CardFactory::totalValue(std::vector<Card *> *deck) {
 
     return total;
 }
+
+std::pair<int, int> CardFactory::containsSubset(std::vector<Card *> *set, std::pair<int, int> *subset) {
+    int idxFirst = -1, idxSecond = -1;
+
+    for (int i = 0; i < set->size(); i++) {
+        if (subset->first == set->at(i)->getValue())            idxFirst = i;
+        else if (subset->second == set->at(i)->getValue())      idxSecond = i;
+
+        if (idxFirst != -1 && idxSecond != -1) break;
+    }
+
+    return std::pair{idxFirst, idxSecond};
+}

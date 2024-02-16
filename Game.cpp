@@ -95,6 +95,24 @@ void Game::handleAttack(Player *player) {
         newHealth.push_back(attackingCard);
         newHealth.push_back(stashedCard);
     }
+
+    // Find all two value combos that could equal health
+    auto pairs = std::vector<std::pair<int, int>>();
+    for (int i = std::max(1, health - 13); i <= 13; i++)
+        pairs.emplace_back(i, health - i);
+
+    for (auto pair: pairs) {
+        auto indices = CardFactory::containsSubset(this->usedPile, &pair);
+        if (indices.first == -1 || indices.second == -1) continue;
+
+        newHealth.push_back(this->usedPile->at(indices.first));
+        newHealth.push_back(this->usedPile->at(indices.second));
+        this->usedPile->erase(this->usedPile->begin() + indices.first);
+        this->usedPile->erase(this->usedPile->begin() + indices.second);
+        break;
+    }
+
+    
 }
 
 void Game::handleSwap(Player *player) {
