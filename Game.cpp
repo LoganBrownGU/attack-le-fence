@@ -57,8 +57,44 @@ void Game::handleAttack(Player *player) {
     const auto &attackedPlayer = player->actionOnPlayer(players);
     bool useStashed = false;
     if (player->hasStashed()) useStashed = player->useStashed();
+    const auto &attackingCard = this->unusedPile->back();
+    Card *stashedCard = nullptr;
+    this->unusedPile->pop_back();
 
-    // todo do attack
+    int health = CardFactory::totalValue(attackedPlayer->getHealth());
+    health -= attackingCard->getValue();
+    if (useStashed) {
+        stashedCard = player->playStashed();
+        health -= stashedCard->getValue();
+    }
+
+    // Now decide how to make up the new health
+    std::vector<Card *> newHealth = std::vector<Card *>();  // cards to make up new health
+    std::vector<Card *> oldCards = std::vector<Card *>();   // cards to be returned to used pile
+
+    // First check all subsets of player's health
+    int x = (int) player->getHealth()->size();
+    for (int i = 0; i < (1 << x); i++) {
+        auto set = std::vector<Card *>();
+        for (int j = 0; j < x; j++) {
+            if (!(i & (1 << j)))
+                continue;
+            set.push_back(player->getHealth()->at(j));
+        }
+
+        if (health == CardFactory::totalValue(&set))
+            newHealth = set;
+    }
+
+    // Check if either attackingCard or stashedCard equal player's new health
+    if (health == attackingCard->getValue()) {
+        newHealth.push_back(attackingCard);
+    } else if (stashedCard && health == stashedCard->getValue()) {
+        newHealth.push_back(stashedCard);
+    } else if (stashedCard && health == attackingCard->getValue() + stashedCard->getValue()) {
+        newHealth.push_back(attackingCard);
+        newHealth.push_back(stashedCard);
+    }
 }
 
 void Game::handleSwap(Player *player) {
