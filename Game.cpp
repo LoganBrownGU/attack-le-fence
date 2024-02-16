@@ -96,6 +96,7 @@ void Game::handleAttack(Player *player) {
         newHealth.push_back(stashedCard);
     }
 
+    // Try to use the used pile
     // Find all two value combos that could equal health
     auto pairs = std::vector<std::pair<int, int>>();
     for (int i = std::max(1, health - 13); i <= 13; i++)
@@ -109,6 +110,18 @@ void Game::handleAttack(Player *player) {
         newHealth.push_back(this->usedPile->at(indices.second));
         this->usedPile->erase(this->usedPile->begin() + indices.first);
         this->usedPile->erase(this->usedPile->begin() + indices.second);
+        break;
+    }
+
+    // Do the same to the unused pile
+    for (auto pair: pairs) {
+        auto indices = CardFactory::containsSubset(this->unusedPile, &pair);
+        if (indices.first == -1 || indices.second == -1) continue;
+
+        newHealth.push_back(this->unusedPile->at(indices.first));
+        newHealth.push_back(this->unusedPile->at(indices.second));
+        this->unusedPile->erase(this->unusedPile->begin() + indices.first);
+        this->unusedPile->erase(this->unusedPile->begin() + indices.second);
         break;
     }
 }
