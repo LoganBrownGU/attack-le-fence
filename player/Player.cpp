@@ -14,12 +14,6 @@ Card *Player::playStashed() {
     return card;
 }
 
-Player::Player() {
-    this->shield = new std::vector<Card *>;
-    this->health = new std::vector<Card *>;
-    this->stashedCard = nullptr;
-}
-
 Player::~Player() {
     delete this->health;
     delete this->shield;
@@ -36,3 +30,6 @@ std::vector<Card *> *Player::getShield() const {
 std::vector<Card *> *Player::getHealth() const {
     return const_cast<std::vector<Card *> *>(health);
 }
+
+Player::Player() : shield(
+        new std::vector<Card *>()), health(new std::vector<Card *>()), stashedCard(nullptr) {}

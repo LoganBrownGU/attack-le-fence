@@ -111,8 +111,6 @@ void Game::handleAttack(Player *player) {
         this->usedPile->erase(this->usedPile->begin() + indices.second);
         break;
     }
-
-    
 }
 
 void Game::handleSwap(Player *player) {

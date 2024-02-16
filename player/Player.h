@@ -45,6 +45,7 @@ public:
     [[nodiscard]] std::vector<Card *> *getHealth() const;
 
     Player();
+
     ~Player();
 
 protected:
@@ -52,9 +53,9 @@ protected:
     //              vectors should never be replaced, only contents
 
     // vector of refs to Cards that make up the player's shield
-    const std::vector<Card *> *shield;
+    std::vector<Card *> *const shield;
     // vector of refs to Cards that make up the player's health
-    const std::vector<Card *> *health;
+    std::vector<Card *> *const health;
     // ref to player's stashed card
     Card *stashedCard;
 };
