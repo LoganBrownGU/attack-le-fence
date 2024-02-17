@@ -23,3 +23,21 @@ void Deck::shuffle() {
         this->cards->push_back(this->pop(idx));
     }
 }
+
+std::string Deck::toString() {
+    if (this->isEmpty()) return "-";
+
+    std::string str;
+    int c = 0;
+    for (const auto &card: *this->cards) {
+        str += card->toString();
+        if (++c % 4 == 0) str += "\n";
+    }
+
+    if (c % 4 != 0) str += "\n";
+    return str;
+}
+
+bool Deck::isEmpty() {
+    return this->cards->empty();
+}

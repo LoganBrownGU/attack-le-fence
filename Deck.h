@@ -18,8 +18,6 @@ public:
     std::unique_ptr<std::vector<Card *>> deal(int n);
     // Randomises the order of the deck
     void shuffle();
-    // Returns a string representation of the deck
-    std::string toString();
     // Returns the sum of all the values of the cards in the deck
     int totalValue();
     // Returns card at position i
@@ -30,6 +28,10 @@ public:
     Card *bottom();
     // Removes the card at index i and returns it
     Card *pop(int i);
+    // Checks if the deck is empty
+    bool isEmpty();
+    // Returns a string representation of the deck
+    std::string toString();
 };
 
 
