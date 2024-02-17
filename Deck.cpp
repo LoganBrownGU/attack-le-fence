@@ -41,3 +41,11 @@ std::string Deck::toString() {
 bool Deck::isEmpty() {
     return this->cards->empty();
 }
+
+int Deck::totalValue() {
+    int total = 0;
+    for (const auto &card: *this->cards)
+        total += card->getValue();
+
+    return total;
+}
