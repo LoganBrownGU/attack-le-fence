@@ -20,3 +20,6 @@
 1	302	1708101022855441410	CMakeFiles/attack_le_fence.dir/player/LocalCLIPlayer.cpp.o	b91243e1cfb3ecbe
 2	325	1708101022875442392	CMakeFiles/attack_le_fence.dir/Game.cpp.o	ff13aba8f172aeaa
 325	385	1708101022935445339	attack_le_fence	a01381ce3047bac7
+1	404	1708182870243305659	CMakeFiles/attack_le_fence.dir/main.cpp.o	a2666cba94ae2ecf
+1	515	1708182870355304478	CMakeFiles/attack_le_fence.dir/Game.cpp.o	ff13aba8f172aeaa
+515	581	1708182870419303802	attack_le_fence	a01381ce3047bac7

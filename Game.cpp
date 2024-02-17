@@ -72,28 +72,43 @@ void Game::handleAttack(Player *player) {
     std::vector<Card *> newHealth = std::vector<Card *>();  // cards to make up new health
     std::vector<Card *> oldCards = std::vector<Card *>();   // cards to be returned to used pile
 
-    // First check all subsets of player's health
-    int x = (int) player->getHealth()->size();
+    // Check if either attackingCard or stashedCard equal player's new health
+    if (health == attackingCard->getValue()) {
+        newHealth.push_back(attackingCard);
+        if (stashedCard) oldCards.push_back(stashedCard);
+        cleanUp(attackedPlayer->getHealth(), &newHealth, &oldCards);
+        return;
+    } else if (stashedCard && health == stashedCard->getValue()) {
+        newHealth.push_back(stashedCard);
+        oldCards.push_back(attackingCard);
+        cleanUp(attackedPlayer->getHealth(), &newHealth, &oldCards);
+        return;
+    } else if (stashedCard && health == attackingCard->getValue() + stashedCard->getValue()) {
+        newHealth.push_back(attackingCard);
+        newHealth.push_back(stashedCard);
+        cleanUp(attackedPlayer->getHealth(), &newHealth, &oldCards);
+        return;
+    }
+
+    // If above doesn't work, then we know that stashed and attacking cards won't be used
+    oldCards.push_back(attackingCard);
+    if (stashedCard) oldCards.push_back(stashedCard);
+
+    // Check all subsets of player's health
+    int x = (int) attackedPlayer->getHealth()->size();
     for (int i = 0; i < (1 << x); i++) {
         auto set = std::vector<Card *>();
         for (int j = 0; j < x; j++) {
             if (!(i & (1 << j)))
                 continue;
-            set.push_back(player->getHealth()->at(j));
+            set.push_back(attackedPlayer->getHealth()->at(j));
         }
 
-        if (health == CardFactory::totalValue(&set))
+        if (health == CardFactory::totalValue(&set)) {
             newHealth = set;
-    }
-
-    // Check if either attackingCard or stashedCard equal player's new health
-    if (health == attackingCard->getValue()) {
-        newHealth.push_back(attackingCard);
-    } else if (stashedCard && health == stashedCard->getValue()) {
-        newHealth.push_back(stashedCard);
-    } else if (stashedCard && health == attackingCard->getValue() + stashedCard->getValue()) {
-        newHealth.push_back(attackingCard);
-        newHealth.push_back(stashedCard);
+            cleanUp(attackedPlayer->getHealth(), &newHealth, &oldCards);
+            return;
+        }
     }
 
     // Try to use the used pile
@@ -102,7 +117,7 @@ void Game::handleAttack(Player *player) {
     for (int i = std::max(1, health - 13); i <= 13; i++)
         pairs.emplace_back(i, health - i);
 
-    for (auto pair: pairs) {
+    for (auto &pair: pairs) {
         auto indices = CardFactory::containsSubset(this->usedPile, &pair);
         if (indices.first == -1 || indices.second == -1) continue;
 
@@ -110,6 +125,7 @@ void Game::handleAttack(Player *player) {
         newHealth.push_back(this->usedPile->at(indices.second));
         this->usedPile->erase(this->usedPile->begin() + indices.first);
         this->usedPile->erase(this->usedPile->begin() + indices.second);
+        cleanUp(attackedPlayer->getHealth(), &newHealth, &oldCards);
         break;
     }
 
@@ -122,6 +138,7 @@ void Game::handleAttack(Player *player) {
         newHealth.push_back(this->unusedPile->at(indices.second));
         this->unusedPile->erase(this->unusedPile->begin() + indices.first);
         this->unusedPile->erase(this->unusedPile->begin() + indices.second);
+        cleanUp(attackedPlayer->getHealth(), &newHealth, &oldCards);
         break;
     }
 }
@@ -150,4 +167,26 @@ void Game::handleSwap(Player *player) {
 void Game::handleStash(Player *player) {
     player->stashCard(this->unusedPile->back());
     this->unusedPile->pop_back();
+}
+
+void Game::cleanUp(std::vector<Card *> *playerHealth, std::vector<Card *> *newHealth, std::vector<Card *> *oldCards) {
+
+    // Take all cards that ARE in playerHealth, but NOT in newHealth, and add them to oldCards
+    for (const auto &card: *playerHealth) {
+        bool discovered;
+        for (const auto &healthCard: *newHealth)
+            if (card == healthCard) discovered = true;
+
+        if (!discovered) oldCards->push_back(card);
+    }
+
+    // Remove all cards from player's health
+    playerHealth->clear();
+    // Add all cards from newHealth to player's health
+    for (const auto &card: *newHealth)
+        playerHealth->push_back(card);
+    
+    // Add all cards from oldCards to usedPile
+    for (const auto &card: *oldCards)
+        this->usedPile->push_back(card);
 }

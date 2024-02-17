@@ -24,6 +24,7 @@ private:
     void handleAttack(Player *player);
     void handleSwap(Player *player);
     void handleStash(Player *player);
+    void cleanUp(std::vector<Card *> *playerHealth, std::vector<Card *> *newHealth, std::vector<Card *> *oldCards);
 };
 
 
