@@ -49,3 +49,25 @@ int Deck::totalValue() {
 
     return total;
 }
+
+Card *Deck::at(int i) {
+    return this->cards->at(i);
+}
+
+Card *Deck::top() {
+    Card *card = this->cards->at(0);
+    this->cards->erase(this->cards->begin());
+    return card;
+}
+
+Card *Deck::bottom() {
+    Card *card = this->cards->at(this->cards->size() - 1);
+    this->cards->erase(this->cards->end());
+    return card;
+}
+
+Card *Deck::pop(int i) {
+    Card *card = this->cards->at(i);
+    this->cards->erase(this->cards->begin() + i);
+    return card;
+}
