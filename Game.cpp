@@ -185,7 +185,7 @@ void Game::cleanUp(std::vector<Card *> *playerHealth, std::vector<Card *> *newHe
     // Add all cards from newHealth to player's health
     for (const auto &card: *newHealth)
         playerHealth->push_back(card);
-    
+
     // Add all cards from oldCards to usedPile
     for (const auto &card: *oldCards)
         this->usedPile->push_back(card);

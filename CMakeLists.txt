@@ -13,4 +13,6 @@ add_executable(attack_le_fence main.cpp
         Game.cpp
         Game.h
         player/LocalCLIPlayer.cpp
-        player/LocalCLIPlayer.h)
+        player/LocalCLIPlayer.h
+        Deck.cpp
+        Deck.h)
