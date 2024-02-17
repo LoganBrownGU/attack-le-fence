@@ -71,3 +71,5 @@ Card *Deck::pop(int i) {
     this->cards->erase(this->cards->begin() + i);
     return card;
 }
+
+Deck::Deck() : cards (new std::vector<Card *>()) {}
