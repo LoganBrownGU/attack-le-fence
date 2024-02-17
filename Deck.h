@@ -16,6 +16,8 @@ private:
 public:
     Deck();
 
+    virtual ~Deck();
+
     // Takes n cards from the deck and returns them as a vector
     std::unique_ptr<std::vector<Card *>> deal(int n);
     // Randomises the order of the deck

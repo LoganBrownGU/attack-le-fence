@@ -73,3 +73,7 @@ Card *Deck::pop(int i) {
 }
 
 Deck::Deck() : cards (new std::vector<Card *>()) {}
+
+Deck::~Deck() {
+    delete this->cards;
+}
