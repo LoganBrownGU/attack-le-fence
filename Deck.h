@@ -11,13 +11,13 @@
 
 class Deck {
 private:
-    std::vector<Card *> cards;
+    std::vector<Card *> * const cards;
 
 public:
     // Takes n cards from the deck and returns them as a vector
     std::unique_ptr<std::vector<Card *>> deal(int n);
     // Randomises the order of the deck
-    void shuffleDeck();
+    void shuffle();
     // Returns a string representation of the deck
     std::string toString();
     // Returns the sum of all the values of the cards in the deck

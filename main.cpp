@@ -4,7 +4,7 @@
 
 int main() {
     auto deck = CardFactory::generateNormalDeck();
-    //CardFactory::shuffleDeck(deck);
+    //CardFactory::shuffle(deck);
     CardFactory::printDeck(deck);
 
     auto player1 = new LocalCLIPlayer();
