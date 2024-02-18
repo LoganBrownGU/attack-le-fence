@@ -60,7 +60,7 @@ void Game::handleAttack(Player *player) {
     const auto &attackingCard = this->unusedPile->pop_bottom();
     Card *stashedCard = nullptr;
 
-    int health = CardFactory::totalValue(attackedPlayer->getHealth());
+    int health = attackedPlayer->getHealth()->totalValue();
     health -= attackingCard->getValue();
     if (useStashed) {
         stashedCard = player->playStashed();
@@ -68,42 +68,42 @@ void Game::handleAttack(Player *player) {
     }
 
     // Now decide how to make up the new health
-    std::vector<Card *> newHealth = std::vector<Card *>();  // cards to make up new health
-    std::vector<Card *> oldCards = std::vector<Card *>();   // cards to be returned to used pile
+    auto newHealth = Deck();  // cards to make up new health
+    auto oldCards = Deck();   // cards to be returned to used pile
 
     // Check if either attackingCard or stashedCard equal player's new health
     if (health == attackingCard->getValue()) {
-        newHealth.push_back(attackingCard);
-        if (stashedCard) oldCards.push_back(stashedCard);
+        newHealth.place_top(attackingCard);
+        if (stashedCard) oldCards.place_top(stashedCard);
         cleanUp(attackedPlayer->getHealth(), &newHealth, &oldCards);
         return;
     } else if (stashedCard && health == stashedCard->getValue()) {
-        newHealth.push_back(stashedCard);
-        oldCards.push_back(attackingCard);
+        newHealth.place_top(stashedCard);
+        oldCards.place_top(attackingCard);
         cleanUp(attackedPlayer->getHealth(), &newHealth, &oldCards);
         return;
     } else if (stashedCard && health == attackingCard->getValue() + stashedCard->getValue()) {
-        newHealth.push_back(attackingCard);
-        newHealth.push_back(stashedCard);
+        newHealth.place_top(attackingCard);
+        newHealth.place_top(stashedCard);
         cleanUp(attackedPlayer->getHealth(), &newHealth, &oldCards);
         return;
     }
 
     // If above doesn't work, then we know that stashed and attacking cards won't be used
-    oldCards.push_back(attackingCard);
-    if (stashedCard) oldCards.push_back(stashedCard);
+    oldCards.place_top(attackingCard);
+    if (stashedCard) oldCards.place_top(stashedCard);
 
     // Check all subsets of player's health
     int x = (int) attackedPlayer->getHealth()->size();
     for (int i = 0; i < (1 << x); i++) {
-        auto set = std::vector<Card *>();
+        auto set = Deck();
         for (int j = 0; j < x; j++) {
             if (!(i & (1 << j)))
                 continue;
-            set.push_back(attackedPlayer->getHealth()->at(j));
+            set.place_top(attackedPlayer->getHealth()->at(j));
         }
 
-        if (health == CardFactory::totalValue(&set)) {
+        if (health == set.totalValue()) {
             newHealth = set;
             cleanUp(attackedPlayer->getHealth(), &newHealth, &oldCards);
             return;
@@ -120,12 +120,10 @@ void Game::handleAttack(Player *player) {
         auto indices = CardFactory::containsSubset(this->usedPile, &pair);
         if (indices.first == -1 || indices.second == -1) continue;
 
-        newHealth.push_back(this->usedPile->at(indices.first));
-        newHealth.push_back(this->usedPile->at(indices.second));
-        this->usedPile->erase(this->usedPile->begin() + indices.first);
-        this->usedPile->erase(this->usedPile->begin() + indices.second);
+        newHealth.place_top(this->usedPile->pop(indices.first));
+        newHealth.place_top(this->usedPile->pop(indices.second));
         cleanUp(attackedPlayer->getHealth(), &newHealth, &oldCards);
-        break;
+        return;
     }
 
     // Do the same to the unused pile
@@ -133,12 +131,10 @@ void Game::handleAttack(Player *player) {
         auto indices = CardFactory::containsSubset(this->unusedPile, &pair);
         if (indices.first == -1 || indices.second == -1) continue;
 
-        newHealth.push_back(this->unusedPile->at(indices.first));
-        newHealth.push_back(this->unusedPile->at(indices.second));
-        this->unusedPile->erase(this->unusedPile->begin() + indices.first);
-        this->unusedPile->erase(this->unusedPile->begin() + indices.second);
+        newHealth.place_top(this->unusedPile->pop(indices.first));
+        newHealth.place_top(this->unusedPile->pop(indices.second));
         cleanUp(attackedPlayer->getHealth(), &newHealth, &oldCards);
-        break;
+        return;
     }
 }
 
@@ -148,18 +144,17 @@ void Game::handleSwap(Player *player) {
 
     auto shield = swappedPlayer->getShield();
     // If new shield value matches current shield value
-    if (CardFactory::totalValue(shield) == newShield->getValue()) {
-        shield->push_back(newShield);
+    if (shield->totalValue() == newShield->getValue()) {
+        shield->place_top(newShield);
         return;
     }
 
     // Take old shield cards and put them in the used pile
-    while (!shield->empty()) {
-        this->usedPile->place_top(shield->at(0));
-        shield->pop_back();
+    while (!shield->isEmpty()) {
+        this->usedPile->place_top(shield->pop_top());
     }
 
-    shield->push_back(newShield);
+    shield->place_top(newShield);
 }
 
 void Game::handleStash(Player *player) {

@@ -43,9 +43,9 @@ public:
     // Returns true if player has a stashed card
     bool hasStashed();
 
-    Deck *getShield() const;
+    [[nodiscard]] Deck *getShield() const;
 
-    Deck *getHealth() const;
+    [[nodiscard]] Deck *getHealth() const;
 
     Player();
 
