@@ -20,8 +20,8 @@ public:
     ~Game();
 
 private:
-    Deck *unusedPile, *usedPile;
-    std::vector<Player *> *players;
+    Deck *const unusedPile, *const usedPile;
+    std::vector<Player *> *const players;
     void handleAttack(Player *player);
     void handleSwap(Player *player);
     void handleStash(Player *player);

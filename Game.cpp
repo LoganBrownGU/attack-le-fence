@@ -4,10 +4,10 @@
 
 #include "Game.h"
 #include "CardFactory.h"
+#include "player/LocalCLIPlayer.h"
 
-Game::Game(std::vector<PlayerType> *players) {
-    this->unusedPile = CardFactory::generateNormalDeck();
-    this->usedPile = new Deck();
+Game::Game(std::vector<PlayerType> *players) : unusedPile(CardFactory::generateNormalDeck()),
+                usedPile(new Deck()), players(new std::vector<Player *>) {
 
     // todo implement concrete players and write switches
     for (PlayerType playerType: *players) {
@@ -15,7 +15,7 @@ Game::Game(std::vector<PlayerType> *players) {
             case BOT:
                 break;
             case LOCAL_CLI:
-                break;
+                this->players->push_back(new LocalCLIPlayer());
             case REMOTE_CLI:
                 break;
         }

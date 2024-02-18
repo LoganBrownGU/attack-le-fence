@@ -1,15 +1,14 @@
 #include <vector>
+#include <iostream>
 #include "CardFactory.h"
 #include "player/LocalCLIPlayer.h"
+#include "Game.h"
 
 int main() {
-    auto deck = CardFactory::generateNormalDeck();
-    //CardFactory::shuffle(deck);
-    CardFactory::printDeck(deck);
+    auto players = new std::vector<PlayerType>();
+    for (int i = 0; i < 3; ++i)
+        players->push_back(LOCAL_CLI);
 
-    auto player1 = new LocalCLIPlayer();
-    player1->decideCards(CardFactory::dealCards(deck, 3).get());
-    auto action = player1->play();
-    if (action == STASH) player1->stashCard(deck->back());
-    player1->play();
+    Game game = Game(players);
+    game.play();
 }
