@@ -33,7 +33,7 @@ void LocalCLIPlayer::decideCards(std::vector<Card *> *cards) {
     for (int i = 0; i < cards->size(); ++i)
         std::cout << std::to_string(i+1) << ": " << cards->at(i)->toString() << std::endl;
 
-    while (this->shield->empty()) {
+    while (this->shield->isEmpty()) {
         std::string input;
         std::cout << "\nEnter the number(s) of the card(s) for your shield: ";
         fflush(stdout);
@@ -53,18 +53,18 @@ void LocalCLIPlayer::decideCards(std::vector<Card *> *cards) {
 
         if (card1 > 3 || card1 < 1) continue;
         card1 -= 1;
-        this->shield->push_back(cards->at(card1));
+        this->shield->place_top(cards->at(card1));
         cards->erase(cards->begin() + card1);
 
         if (card2 > 3 || card2 < 1) continue;
         card2 -= 1;
-        this->shield->push_back(cards->at(card2));
+        this->shield->place_top(cards->at(card2));
         cards->erase(cards->begin() + card2);
     }
 
     // Add the rest of the cards to health
     for (const auto &card: *cards)
-        this->health->push_back(card);
+        this->health->place_top(card);
 
     std::cout << "Your setup is: \n";
     printCards();
@@ -85,13 +85,9 @@ bool LocalCLIPlayer::useStashed() {
 void LocalCLIPlayer::printCards() {
     const std::string cardBack = "|+-+-+-+-+-+|";
 
-    std::cout << "shield: ";
-    for (Card *card: *this->shield)
-        std::cout << card->toString();
+    std::cout << "shield: \n" << this->shield->toString() << std::endl;
 
-    std::cout << "\nhealth: ";
-    for (Card *card: *this->health)
-        std::cout << card->toString();
+    std::cout << "health: \n" << this->health->toString() << std::endl;
 
-    std::cout << "\nstashed card: " << (this->stashedCard ? cardBack : "no") << std::endl;
+    std::cout << "stashed card: " << (this->stashedCard ? cardBack : "no") << std::endl;
 }
