@@ -85,3 +85,7 @@ void Deck::place_top(Card *card) {
 void Deck::place_bottom(Card *card) {
     this->cards->push_back(card);
 }
+
+size_t Deck::size() {
+    return this->cards->size();
+}

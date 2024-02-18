@@ -37,6 +37,8 @@ public:
     void place_bottom(Card *card);
     // Checks if the deck is empty
     bool isEmpty();
+    // Returns number of cards in deck
+    size_t size();
     // Returns a string representation of the deck
     std::string toString();
 };
