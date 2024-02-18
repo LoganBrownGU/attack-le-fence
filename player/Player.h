@@ -7,6 +7,7 @@
 
 
 #include <vector>
+#include "../Deck.h"
 
 class Card;
 
@@ -33,16 +34,18 @@ public:
 
     virtual bool useStashed() = 0;
 
-
+    // Place card in player's stash
     void stashCard(Card *card);
 
+    // Removes player's stashed card and returns it
     Card *playStashed();
 
+    // Returns true if player has a stashed card
     bool hasStashed();
 
-    [[nodiscard]] std::vector<Card *> *getShield() const;
+    Deck *getShield() const;
 
-    [[nodiscard]] std::vector<Card *> *getHealth() const;
+    Deck *getHealth() const;
 
     Player();
 
@@ -52,10 +55,10 @@ protected:
     // IMPORTANT:   Player does not have ownership over any cards.
     //              vectors should never be replaced, only contents
 
-    // vector of refs to Cards that make up the player's shield
-    std::vector<Card *> *const shield;
-    // vector of refs to Cards that make up the player's health
-    std::vector<Card *> *const health;
+    // Deck of cards that makes up the player's shield
+    Deck *const shield;
+    // Deck of cards that makes up the player's healths
+    Deck *const health;
     // ref to player's stashed card
     Card *stashedCard;
 };

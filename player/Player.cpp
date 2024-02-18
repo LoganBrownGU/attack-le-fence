@@ -23,13 +23,13 @@ bool Player::hasStashed() {
     return this->stashedCard;
 }
 
-std::vector<Card *> *Player::getShield() const {
-    return const_cast<std::vector<Card *> *>(shield);
+Player::Player() : shield(new Deck()),
+            health(new Deck()), stashedCard(nullptr) {}
+
+Deck *Player::getShield() const {
+    return shield;
 }
 
-std::vector<Card *> *Player::getHealth() const {
-    return const_cast<std::vector<Card *> *>(health);
+Deck *Player::getHealth() const {
+    return health;
 }
-
-Player::Player() : shield(
-        new std::vector<Card *>()), health(new std::vector<Card *>()), stashedCard(nullptr) {}
