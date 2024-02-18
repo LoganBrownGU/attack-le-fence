@@ -8,7 +8,7 @@
 std::unique_ptr<std::vector<Card *>> Deck::deal(int n) {
     auto dealtCards = std::vector<Card *>();
     for (int i = 0; i < n; i++)
-        dealtCards.push_back(this->bottom());
+        dealtCards.push_back(this->pop_bottom());
 
     return std::make_unique<std::vector<Card *>>(dealtCards);
 }
@@ -54,13 +54,13 @@ Card *Deck::at(int i) {
     return this->cards->at(i);
 }
 
-Card *Deck::top() {
+Card *Deck::pop_top() {
     Card *card = this->cards->at(0);
     this->cards->erase(this->cards->begin());
     return card;
 }
 
-Card *Deck::bottom() {
+Card *Deck::pop_bottom() {
     Card *card = this->cards->at(this->cards->size() - 1);
     this->cards->erase(this->cards->end());
     return card;
@@ -78,10 +78,10 @@ Deck::~Deck() {
     delete this->cards;
 }
 
-void Deck::placeTop(Card *card) {
+void Deck::place_top(Card *card) {
     this->cards->insert(this->cards->begin(), card);
 }
 
-void Deck::placeBottom(Card *card) {
+void Deck::place_bottom(Card *card) {
     this->cards->push_back(card);
 }

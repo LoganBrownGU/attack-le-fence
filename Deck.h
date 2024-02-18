@@ -26,15 +26,15 @@ public:
     // Returns card at position i
     Card *at(int i);
     // Returns card at the top of the deck (if it was facing upwards) and removes it from the deck
-    Card *top();
+    Card *pop_top();
     // Returns card at the bottom of the deck (if it was facing upwards) and removes it from the deck
-    Card *bottom();
+    Card *pop_bottom();
     // Removes the card at index i and returns it
     Card *pop(int i);
     // Places card on top of deck
-    void placeTop(Card *card);
+    void place_top(Card *card);
     // Places card on bottom of deck
-    void placeBottom(Card *card);
+    void place_bottom(Card *card);
     // Checks if the deck is empty
     bool isEmpty();
     // Returns a string representation of the deck

@@ -36,5 +36,5 @@ Implementation of the classic card game "Attack Le Fence" in C++
 
 ## Clarifications
 - The game treats `vector`s of cards thus:
-  - The "top" card (i.e., the one that would be on top of the deck if it were placed face up) is the **first** card in the `vector`. 
-  - The "bottom" card (i.e., the one that would be on top of the deck if it were placed face down) is the **last** card in the `vector`.
+  - The "pop_top" card (i.e., the one that would be on pop_top of the deck if it were placed face up) is the **first** card in the `vector`. 
+  - The "pop_bottom" card (i.e., the one that would be on pop_top of the deck if it were placed face down) is the **last** card in the `vector`.

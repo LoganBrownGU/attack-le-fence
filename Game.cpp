@@ -57,7 +57,7 @@ void Game::handleAttack(Player *player) {
     const auto &attackedPlayer = player->actionOnPlayer(players);
     bool useStashed = false;
     if (player->hasStashed()) useStashed = player->useStashed();
-    const auto &attackingCard = this->unusedPile->bottom();
+    const auto &attackingCard = this->unusedPile->pop_bottom();
     Card *stashedCard = nullptr;
 
     int health = CardFactory::totalValue(attackedPlayer->getHealth());
@@ -144,8 +144,7 @@ void Game::handleAttack(Player *player) {
 
 void Game::handleSwap(Player *player) {
     const auto &swappedPlayer = player->actionOnPlayer(players);
-    auto newShield = this->unusedPile->back();
-    this->unusedPile->pop_back();
+    auto newShield = this->unusedPile->pop_bottom();
 
     auto shield = swappedPlayer->getShield();
     // If new shield value matches current shield value
@@ -156,7 +155,7 @@ void Game::handleSwap(Player *player) {
 
     // Take old shield cards and put them in the used pile
     while (!shield->empty()) {
-        this->usedPile->insert(this->usedPile->begin(), shield->back());
+        this->usedPile->place_top(shield->at(0));
         shield->pop_back();
     }
 
@@ -164,8 +163,7 @@ void Game::handleSwap(Player *player) {
 }
 
 void Game::handleStash(Player *player) {
-    player->stashCard(this->unusedPile->back());
-    this->unusedPile->pop_back();
+    player->stashCard(this->unusedPile->pop_bottom());
 }
 
 void Game::cleanUp(std::vector<Card *> *playerHealth, std::vector<Card *> *newHealth, std::vector<Card *> *oldCards) {

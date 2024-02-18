@@ -13,7 +13,7 @@ Deck *CardFactory::generateNormalDeck() {
 
     for (const auto e: Suit::All) {
         for (int i = 1; i <= 13; i++)
-            deck->placeTop(new Card(i, e));
+            deck->place_top(new Card(i, e));
     }
 
     return deck;
