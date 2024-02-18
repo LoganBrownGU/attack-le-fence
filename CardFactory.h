@@ -14,10 +14,6 @@
 class CardFactory {
 public:
     static Deck *generateNormalDeck();
-    static std::unique_ptr<Deck> dealCards(std::vector<Card *> *deck, int n);
-    static void shuffleDeck(std::vector<Card *> *deck);
-    static void printDeck(std::vector<Card *> *deck);
-    static int totalValue(std::vector<Card *> *deck);
     static std::pair<int, int> containsSubset(Deck *set, std::pair<int, int> *subset);
 };
 
