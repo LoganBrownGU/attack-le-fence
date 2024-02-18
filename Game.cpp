@@ -161,7 +161,7 @@ void Game::handleStash(Player *player) {
     player->stashCard(this->unusedPile->pop_bottom());
 }
 
-void Game::cleanUp(std::vector<Card *> *playerHealth, std::vector<Card *> *newHealth, std::vector<Card *> *oldCards) {
+void Game::cleanUp(Deck *playerHealth, Deck *newHealth, Deck *oldCards) {
 
     // Take all cards that ARE in playerHealth, but NOT in newHealth, and add them to oldCards
     for (const auto &card: *playerHealth) {
@@ -169,7 +169,7 @@ void Game::cleanUp(std::vector<Card *> *playerHealth, std::vector<Card *> *newHe
         for (const auto &healthCard: *newHealth)
             if (card == healthCard) discovered = true;
 
-        if (!discovered) oldCards->push_back(card);
+        if (!discovered) oldCards->place_top(card);
     }
 
     // Remove all cards from player's health

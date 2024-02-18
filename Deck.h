@@ -41,6 +41,36 @@ public:
     size_t size();
     // Returns a string representation of the deck
     std::string toString();
+
+    class Iterator {
+    public:
+        using iterator_category = std::forward_iterator_tag;
+        using difference_type   = std::ptrdiff_t;
+        using value_type        = Card *;
+        using pointer           = Card **;  // or also value_type*
+        using reference         = Card *&;  // or also value_type&
+
+        Iterator(int index, std::vector<Card *> *cards) : index(index), cards(cards) {}
+
+        reference operator*() const { return cards->at(index); }
+        pointer operator&() { return &cards->at(index); }
+
+        Iterator &operator++() { index++; return *this; }
+
+        Iterator operator++(int) { Iterator tmp = *this; ++(*this); return tmp; }
+
+        friend bool operator== (const Iterator &a, const Iterator &b) { return (a.index == b.index) && (a.cards == b.cards); }
+        friend bool operator!= (const Iterator &a, const Iterator &b) { return (a.index != b.index) && (a.cards == b.cards); }
+
+    private:
+        std::vector<Card *> *cards;
+        int index;
+    };
+
+    // Returns start of cards
+    Iterator begin()    { return {0, cards}; }
+    // Returns element after end of cards
+    Iterator end()      { return {static_cast<int>(cards->size()), cards}; }
 };
 
 
