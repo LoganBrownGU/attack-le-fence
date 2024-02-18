@@ -89,3 +89,7 @@ void Deck::place_bottom(Card *card) {
 size_t Deck::size() {
     return this->cards->size();
 }
+
+void Deck::clear() {
+    this->cards->clear();
+}

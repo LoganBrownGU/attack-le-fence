@@ -176,7 +176,7 @@ void Game::cleanUp(Deck *playerHealth, Deck *newHealth, Deck *oldCards) {
     playerHealth->clear();
     // Add all cards from newHealth to player's health
     for (const auto &card: *newHealth)
-        playerHealth->push_back(card);
+        playerHealth->place_top(card);
 
     // Add all cards from oldCards to usedPile
     for (const auto &card: *oldCards)
