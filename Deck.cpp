@@ -93,3 +93,8 @@ size_t Deck::size() {
 void Deck::clear() {
     this->cards->clear();
 }
+
+void Deck::copy_from(Deck *other) {
+    for (const auto &card: *other)
+        this->place_top(card);
+}

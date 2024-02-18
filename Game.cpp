@@ -104,7 +104,7 @@ void Game::handleAttack(Player *player) {
         }
 
         if (health == set.totalValue()) {
-            newHealth = set;
+            newHealth.copy_from(&set);
             cleanUp(attackedPlayer->getHealth(), &newHealth, &oldCards);
             return;
         }

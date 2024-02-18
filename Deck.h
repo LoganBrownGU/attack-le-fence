@@ -35,12 +35,14 @@ public:
     size_t size();
     // Returns a string representation of the deck
     std::string toString();
-    // Randomises the order of the deck
-    void shuffle();
     // Places card on top of deck
     void place_top(Card *card);
     // Places card on bottom of deck
     void place_bottom(Card *card);
+    // Copies cards from other into this deck
+    void copy_from(Deck *other);
+    // Randomises the order of the deck
+    void shuffle();
     // Empties deck
     void clear();
 
