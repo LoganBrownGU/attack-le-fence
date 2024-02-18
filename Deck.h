@@ -15,8 +15,7 @@ private:
 
 public:
     Deck();
-
-    virtual ~Deck();
+    ~Deck();
 
     // Takes n cards from the deck and returns them as a vector
     std::unique_ptr<std::vector<Card *>> deal(int n);
@@ -32,6 +31,10 @@ public:
     Card *bottom();
     // Removes the card at index i and returns it
     Card *pop(int i);
+    // Places card on top of deck
+    void placeTop(Card *card);
+    // Places card on bottom of deck
+    void placeBottom(Card *card);
     // Checks if the deck is empty
     bool isEmpty();
     // Returns a string representation of the deck

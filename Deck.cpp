@@ -77,3 +77,11 @@ Deck::Deck() : cards (new std::vector<Card *>()) {}
 Deck::~Deck() {
     delete this->cards;
 }
+
+void Deck::placeTop(Card *card) {
+    this->cards->insert(this->cards->begin(), card);
+}
+
+void Deck::placeBottom(Card *card) {
+    this->cards->push_back(card);
+}

@@ -9,6 +9,7 @@
 #include <vector>
 #include "Card.h"
 #include "player/Player.h"
+#include "Deck.h"
 
 class Game {
 
@@ -19,7 +20,7 @@ public:
     ~Game();
 
 private:
-    std::vector<Card *> *unusedPile, *usedPile;
+    Deck *unusedPile, *usedPile;
     std::vector<Player *> *players;
     void handleAttack(Player *player);
     void handleSwap(Player *player);

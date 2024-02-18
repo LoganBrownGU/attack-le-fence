@@ -57,9 +57,9 @@ void Game::handleAttack(Player *player) {
     const auto &attackedPlayer = player->actionOnPlayer(players);
     bool useStashed = false;
     if (player->hasStashed()) useStashed = player->useStashed();
-    const auto &attackingCard = this->unusedPile->back();
+    const auto &attackingCard = this->unusedPile->bottom();
     Card *stashedCard = nullptr;
-    this->unusedPile->pop_back();
+    this->usedPile
 
     int health = CardFactory::totalValue(attackedPlayer->getHealth());
     health -= attackingCard->getValue();
