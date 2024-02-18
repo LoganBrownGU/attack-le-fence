@@ -8,15 +8,15 @@
 #include <random>
 #include <iostream>
 
-std::vector<Card *> *CardFactory::generateNormalDeck() {
-    auto *cards = new std::vector<Card *>;
+Deck *CardFactory::generateNormalDeck() {
+    Deck *deck = new Deck();
 
     for (const auto e: Suit::All) {
         for (int i = 1; i <= 13; i++)
-            cards->push_back(new Card(i, e));
+            deck->placeTop(new Card(i, e));
     }
 
-    return cards;
+    return deck;
 }
 
 void CardFactory::shuffleDeck(std::vector<Card *> *deck) {
@@ -44,7 +44,7 @@ void CardFactory::printDeck(std::vector<Card *> *deck) {
     std::cout << std::endl;
 }
 
-std::unique_ptr<std::vector<Card *>> CardFactory::dealCards(std::vector<Card *> *deck, int n) {
+std::unique_ptr<Deck> CardFactory::dealCards(std::vector<Card *> *deck, int n) {
     auto cards = std::make_unique<std::vector<Card *>>(std::vector<Card *>());
 
     for (int i = 0; i < n; i++) {

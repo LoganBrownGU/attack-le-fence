@@ -9,11 +9,12 @@
 #include <memory>
 
 #include "Card.h"
+#include "Deck.h"
 
 class CardFactory {
 public:
-    static std::vector<Card *> *generateNormalDeck();
-    static std::unique_ptr<std::vector<Card *>> dealCards(std::vector<Card *> *deck, int n);
+    static Deck *generateNormalDeck();
+    static std::unique_ptr<Deck> dealCards(std::vector<Card *> *deck, int n);
     static void shuffleDeck(std::vector<Card *> *deck);
     static void printDeck(std::vector<Card *> *deck);
     static int totalValue(std::vector<Card *> *deck);

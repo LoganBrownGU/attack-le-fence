@@ -7,7 +7,7 @@
 
 Game::Game(std::vector<PlayerType> *players) {
     this->unusedPile = CardFactory::generateNormalDeck();
-    this->usedPile = new std::vector<Card *>;
+    this->usedPile = new Deck();
 
     // todo implement concrete players and write switches
     for (PlayerType playerType: *players) {
@@ -59,7 +59,6 @@ void Game::handleAttack(Player *player) {
     if (player->hasStashed()) useStashed = player->useStashed();
     const auto &attackingCard = this->unusedPile->bottom();
     Card *stashedCard = nullptr;
-    this->usedPile
 
     int health = CardFactory::totalValue(attackedPlayer->getHealth());
     health -= attackingCard->getValue();
