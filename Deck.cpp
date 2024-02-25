@@ -63,7 +63,7 @@ Card *Deck::pop_top() {
 
 Card *Deck::pop_bottom() {
     Card *card = this->cards->at(this->cards->size() - 1);
-    this->cards->erase(this->cards->end());
+    this->cards->erase(this->cards->end() - 1);
     return card;
 }
 
