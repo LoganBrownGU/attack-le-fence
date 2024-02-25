@@ -18,7 +18,7 @@ public:
     ~Deck();
 
     // Takes n cards from the deck and returns them as a vector
-    std::unique_ptr<std::vector<Card *>> deal(int n);
+    std::unique_ptr<Deck> deal(int n);
     // Returns the sum of all the values of the cards in the deck
     int totalValue();
     // Returns card at position i

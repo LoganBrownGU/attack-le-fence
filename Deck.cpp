@@ -5,12 +5,12 @@
 #include <random>
 #include "Deck.h"
 
-std::unique_ptr<std::vector<Card *>> Deck::deal(int n) {
-    auto dealtCards = std::vector<Card *>();
+std::unique_ptr<Deck> Deck::deal(int n) {
+    Deck dealtCards;
     for (int i = 0; i < n; i++)
-        dealtCards.push_back(this->pop_bottom());
+        dealtCards.place_top(this->pop_bottom());
 
-    return std::make_unique<std::vector<Card *>>(dealtCards);
+    return std::make_unique<Deck>(dealtCards);
 }
 
 void Deck::shuffle() {
