@@ -3,14 +3,15 @@
 //
 
 #include <random>
+#include <iostream>
 #include "Deck.h"
 
-std::unique_ptr<Deck> Deck::deal(int n) {
-    Deck dealtCards;
+Deck *Deck::deal(int n) {
+    auto dealtCards = new Deck();
     for (int i = 0; i < n; i++)
-        dealtCards.place_top(this->pop_bottom());
+        dealtCards->place_top(this->pop_bottom());
 
-    return std::make_unique<Deck>(dealtCards);
+    return dealtCards;
 }
 
 void Deck::shuffle() {

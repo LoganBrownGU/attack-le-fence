@@ -13,7 +13,7 @@ public:
 
     Player *actionOnPlayer(std::vector<Player *> *players) override;
 
-    void decideCards(std::vector<Card *> *cards) override;
+    void decideCards(Deck *cards) override;
 
     bool useStashed() override;
 

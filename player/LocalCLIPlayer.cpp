@@ -28,10 +28,10 @@ Player *LocalCLIPlayer::actionOnPlayer(std::vector<Player *> *players) {
     return nullptr;
 }
 
-void LocalCLIPlayer::decideCards(std::vector<Card *> *cards) {
+void LocalCLIPlayer::decideCards(Deck *cards) {
     std::cout << "Your cards are: \n";
-    for (int i = 0; i < cards->size(); ++i)
-        std::cout << std::to_string(i+1) << ": " << cards->at(i)->toString() << std::endl;
+    for (int i = 0; i < cards->size(); i++)
+        std::cout << std::to_string(i + 1) << ": " << cards->at(i)->toString() << std::endl;
 
     while (this->shield->isEmpty()) {
         std::string input;
@@ -53,13 +53,11 @@ void LocalCLIPlayer::decideCards(std::vector<Card *> *cards) {
 
         if (card1 > 3 || card1 < 1) continue;
         card1 -= 1;
-        this->shield->place_top(cards->at(card1));
-        cards->erase(cards->begin() + card1);
+        this->shield->place_top(cards->pop(card1));
 
         if (card2 > 3 || card2 < 1) continue;
         card2 -= 1;
-        this->shield->place_top(cards->at(card2));
-        cards->erase(cards->begin() + card2);
+        this->shield->place_top(cards->pop(card2));
     }
 
     // Add the rest of the cards to health

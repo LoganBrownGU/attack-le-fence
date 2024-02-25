@@ -30,7 +30,7 @@ public:
 
     virtual Player *actionOnPlayer(std::vector<Player *> *players) = 0;
 
-    virtual void decideCards(std::vector<Card *> *cards) = 0;
+    virtual void decideCards(Deck *cards) = 0;
 
     virtual bool useStashed() = 0;
 

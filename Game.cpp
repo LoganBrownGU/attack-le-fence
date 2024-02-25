@@ -2,6 +2,7 @@
 // Created by logan on 10/02/24.
 //
 
+#include <iostream>
 #include "Game.h"
 #include "CardFactory.h"
 #include "player/LocalCLIPlayer.h"
@@ -37,8 +38,10 @@ void Game::play() {
         activePlayers.push_back(player);
 
     // Make players decide cards
-    for (const auto &player: *this->players)
-        player->decideCards(this->unusedPile->deal(3).get());
+    for (const auto &player: *this->players) {
+        auto dealtCards = std::make_unique<Deck>(*this->unusedPile->deal(3));
+        player->decideCards(this->unusedPile->deal(3));
+    }
 
     while (activePlayers.size() > 1) {
         for (const auto &player: activePlayers) {
