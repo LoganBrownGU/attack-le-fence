@@ -15,4 +15,8 @@ add_executable(attack_le_fence main.cpp
         player/LocalCLIPlayer.cpp
         player/LocalCLIPlayer.h
         Deck.cpp
-        Deck.h)
+        Deck.h
+        google_tests/DeckTest.cpp)
+
+add_subdirectory(google_tests)
+add_subdirectory(Boost_tests)
