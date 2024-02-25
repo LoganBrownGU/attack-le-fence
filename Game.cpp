@@ -29,10 +29,16 @@ Game::~Game() {
 }
 
 void Game::play() {
+    this->unusedPile->shuffle();
+
     // Copy players into active players
     auto activePlayers = std::vector<Player *>();
     for (const auto &player: *this->players)
         activePlayers.push_back(player);
+
+    // Make players decide cards
+    for (const auto &player: *this->players)
+        player->decideCards(this->unusedPile->deal(3).get());
 
     while (activePlayers.size() > 1) {
         for (const auto &player: activePlayers) {
