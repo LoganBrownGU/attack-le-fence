@@ -25,7 +25,25 @@ Action LocalCLIPlayer::play() {
 }
 
 Player *LocalCLIPlayer::actionOnPlayer(std::vector<Player *> *players) {
-    return nullptr;
+    Player *player = nullptr;
+
+    while (!player) {
+        std::cout << "Which player do you want to perform the action on? (1-" << players->size() << "): ";
+        std::string input;
+        std::cin >> input;
+
+        int index;
+        try {
+            index = std::stoi(input);
+        } catch (std::exception &e) {
+            continue;
+        }
+
+        if (index > players->size() || index < 1) continue;
+        player = players->at(index - 1);
+    }
+
+    return player;
 }
 
 void LocalCLIPlayer::decideCards(Deck *cards) {
