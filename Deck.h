@@ -17,33 +17,37 @@ public:
     Deck();
     ~Deck();
 
-    // Takes n cards from the deck and returns them as a vector
+    /// @brief Takes n cards from the deck and returns them as a vector
     Deck * deal(int n);
-    // Returns the sum of all the values of the cards in the deck
+    /// @brief Returns the sum of all the values of the cards in the deck
     int totalValue();
-    // Returns card at position i
+    /// @brief Returns card at position i
     Card *at(int i);
-    // Returns card at the top of the deck (if it was facing upwards) and removes it from the deck
+    /// @brief Returns card at the top of the deck (if it was facing upwards) and removes it from the deck
     Card *pop_top();
-    // Returns card at the bottom of the deck (if it was facing upwards) and removes it from the deck
+    /// @brief Returns card at the bottom of the deck (if it was facing upwards) and removes it from the deck
     Card *pop_bottom();
-    // Removes the card at index i and returns it
+    /// @brief Removes the card at index i
+    /// @brief Removed card
     Card *pop(int i);
-    // Checks if the deck is clear
+    /// @brief Removes card c
+    /// @returns Card c
+    Card *pop(Card *c);
+    /// @brief Checks if the deck is clear
     bool isEmpty();
-    // Returns number of cards in deck
+    /// @brief Returns number of cards in deck
     size_t size();
-    // Returns a string representation of the deck
+    /// @brief Returns a string representation of the deck
     std::string toString();
-    // Places card on top of deck
+    /// @brief Places card on top of deck
     void place_top(Card *card);
-    // Places card on bottom of deck
+    /// @brief Places card on bottom of deck
     void place_bottom(Card *card);
-    // Copies cards from other into this deck
+    /// @brief Copies cards from other into this deck
     void copy_from(Deck *other);
-    // Randomises the order of the deck
+    /// @brief Randomises the order of the deck
     void shuffle();
-    // Empties deck
+    /// @brief Empties deck
     void clear();
 
     class Iterator {

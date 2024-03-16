@@ -99,3 +99,17 @@ void Deck::copy_from(Deck *other) {
     for (const auto &card: *other)
         this->place_top(card);
 }
+
+Card *Deck::pop(Card *c) {
+    int i = 0;
+    for (const auto &card: *this->cards) {
+        if (card == c) {
+            auto &rcard = card;
+            this->cards->erase(this->cards->begin() + i);
+            return rcard;
+        }
+        i++;
+    }
+
+    return nullptr;
+}

@@ -51,13 +51,18 @@ void LocalCLIPlayer::decideCards(Deck *cards) {
             std::cout << "Make sure you enter two integers, seperated by ','\n";
         }
 
-        if (card1 > 3 || card1 < 1) continue;
+        if (card1 > 3 || card1 < 1 || card2 > 3 || card2 < 1) continue;
         card1 -= 1;
-        this->shield->place_top(cards->pop(card1));
-
-        if (card2 > 3 || card2 < 1) continue;
         card2 -= 1;
-        this->shield->place_top(cards->pop(card2));
+        if (card1 > card2) {
+            this->shield->place_top(cards->pop(card1));
+            this->shield->place_top(cards->pop(card2));
+        } else if (card2 > card1) {
+            this->shield->place_top(cards->pop(card2));
+            this->shield->place_top(cards->pop(card1));
+        } else {
+            this->shield->place_top(cards->pop(card1));
+        }
     }
 
     // Add the rest of the cards to health
