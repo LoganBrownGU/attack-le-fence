@@ -76,7 +76,10 @@ void Game::handleAttack(Player *player) {
         health -= stashedCard->getValue();
     }
 
-    // Now decide how to make up the new health
+    std::cout << "You attack with: ";
+    std::cout << attackingCard->toString() << (useStashed ? " and " + stashedCard->toString() : "") << std::endl;
+
+              // Now decide how to make up the new health
     auto newHealth = Deck();  // cards to make up new health
     auto oldCards = Deck();   // cards to be returned to used pile
 
