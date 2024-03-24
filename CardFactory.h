@@ -13,8 +13,9 @@
 
 class CardFactory {
 public:
-    static Deck *generateNormalDeck();
-    static std::pair<int, int> containsSubset(Deck *set, std::pair<int, int> *subset);
+	static Deck *generateNormalDeck();
+
+	static std::pair<int, int> containsSubset(Deck *set, std::pair<int, int> *subset);
 };
 
 

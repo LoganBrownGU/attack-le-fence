@@ -11,74 +11,95 @@
 
 class Deck {
 private:
-    std::vector<Card *> * const cards;
+	std::vector<Card *> *const cards;
 
 public:
-    Deck();
-    ~Deck();
+	Deck();
 
-    /// @brief Takes n cards from the deck and returns them as a vector
-    Deck * deal(int n);
-    /// @brief Returns the sum of all the values of the cards in the deck
-    int totalValue();
-    /// @brief Returns card at position i
-    Card *at(int i);
-    /// @brief Returns card at the top of the deck (if it was facing upwards) and removes it from the deck
-    Card *pop_top();
-    /// @brief Returns card at the bottom of the deck (if it was facing upwards) and removes it from the deck
-    Card *pop_bottom();
-    /// @brief Removes the card at index i
-    /// @brief Removed card
-    Card *pop(int i);
-    /// @brief Removes card c
-    /// @returns Card c
-    Card *pop(Card *c);
-    /// @brief Checks if the deck is clear
-    bool isEmpty();
-    /// @brief Returns number of cards in deck
-    size_t size();
-    /// @brief Returns a string representation of the deck
-    std::string toString();
-    /// @brief Places card on top of deck
-    void place_top(Card *card);
-    /// @brief Places card on bottom of deck
-    void place_bottom(Card *card);
-    /// @brief Copies cards from other into this deck
-    void copy_from(Deck *other);
-    /// @brief Randomises the order of the deck
-    void shuffle();
-    /// @brief Empties deck
-    void clear();
+	~Deck();
 
-    class Iterator {
-    public:
-        using iterator_category = std::forward_iterator_tag;
-        using difference_type   = std::ptrdiff_t;
-        using value_type        = Card *;
-        using pointer           = Card **;  // or also value_type*
-        using reference         = Card *&;  // or also value_type&
+	/// @brief Takes n cards from the deck and returns them as a vector
+	Deck *deal(int n);
 
-        Iterator(int index, std::vector<Card *> *cards) : index(index), cards(cards) {}
+	/// @brief Returns the sum of all the values of the cards in the deck
+	int totalValue();
 
-        reference operator*() const { return cards->at(index); }
-        pointer operator&() { return &cards->at(index); }
+	/// @brief Returns card at position i
+	Card *at(int i);
 
-        Iterator &operator++() { index++; return *this; }
+	/// @brief Returns card at the top of the deck (if it was facing upwards) and removes it from the deck
+	Card *pop_top();
 
-        Iterator operator++(int) { Iterator tmp = *this; ++(*this); return tmp; }
+	/// @brief Returns card at the bottom of the deck (if it was facing upwards) and removes it from the deck
+	Card *pop_bottom();
 
-        friend bool operator== (const Iterator &a, const Iterator &b) { return (a.index == b.index) && (a.cards == b.cards); }
-        friend bool operator!= (const Iterator &a, const Iterator &b) { return (a.index != b.index) && (a.cards == b.cards); }
+	/// @brief Removes the card at index i
+	/// @brief Removed card
+	Card *pop(int i);
 
-    private:
-        std::vector<Card *> *cards;
-        int index;
-    };
+	/// @brief Removes card c
+	/// @returns Card c
+	Card *pop(Card *c);
 
-    // Returns start of cards
-    Iterator begin()    { return {0, cards}; }
-    // Returns element after end of cards
-    Iterator end()      { return {static_cast<int>(cards->size()), cards}; }
+	/// @brief Checks if the deck is clear
+	bool isEmpty();
+
+	/// @brief Returns number of cards in deck
+	size_t size();
+
+	/// @brief Returns a string representation of the deck
+	std::string toString();
+
+	/// @brief Places card on top of deck
+	void place_top(Card *card);
+
+	/// @brief Places card on bottom of deck
+	void place_bottom(Card *card);
+
+	/// @brief Copies cards from other into this deck
+	void copy_from(Deck *other);
+
+	/// @brief Randomises the order of the deck
+	void shuffle();
+
+	/// @brief Empties deck
+	void clear();
+
+	class Iterator {
+	public:
+		using iterator_category = std::forward_iterator_tag;
+		using difference_type = std::ptrdiff_t;
+		using value_type = Card *;
+		using pointer = Card **;  // or also value_type*
+		using reference = Card *&;  // or also value_type&
+
+		Iterator(int index, std::vector<Card *> *cards) : index(index), cards(cards) {}
+
+		reference operator*() const { return cards->at(index); }
+
+		pointer operator&() { return &cards->at(index); }
+
+		Iterator &operator++() {
+			index++;
+			return *this;
+		}
+
+		Iterator operator++(int) { Iterator tmp = *this; ++(*this); return tmp; }
+
+		friend bool operator==(const Iterator &a, const Iterator &b) { return (a.index == b.index) && (a.cards == b.cards); }
+
+		friend bool operator!=(const Iterator &a, const Iterator &b) { return (a.index != b.index) && (a.cards == b.cards); }
+
+	private:
+		std::vector<Card *> *cards;
+		int index;
+	};
+
+	// Returns start of cards
+	Iterator begin() { return {0, cards}; }
+
+	// Returns element after end of cards
+	Iterator end() { return {static_cast<int>(cards->size()), cards}; }
 };
 
 

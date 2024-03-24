@@ -9,16 +9,16 @@
 
 class LocalCLIPlayer : public Player {
 public:
-    Action play() override;
+	Action play() override;
 
-    Player *actionOnPlayer(std::vector<Player *> *players) override;
+	Player *actionOnPlayer(std::vector<Player *> *players) override;
 
-    void decideCards(Deck *cards) override;
+	void decideCards(Deck *cards) override;
 
-    bool useStashed() override;
+	bool useStashed() override;
 
 private:
-    void printCards();
+	void printCards();
 };
 
 

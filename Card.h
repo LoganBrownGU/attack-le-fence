@@ -9,32 +9,32 @@
 #include <string>
 
 namespace Suit {
-    enum Type {
-        HEARTS = 0,
-        SPADES = 1,
-        CLUBS  = 2,
-        DIAMONDS = 3
-    };
+	enum Type {
+		HEARTS = 0,
+		SPADES = 1,
+		CLUBS = 2,
+		DIAMONDS = 3
+	};
 
-    static const Type All[] = {HEARTS, SPADES, CLUBS, DIAMONDS};
-    static const std::string values[] = {"\u2665", "\u2660", "\u2663", "\u2666"};
+	static const Type All[] = {HEARTS, SPADES, CLUBS, DIAMONDS};
+	static const std::string values[] = {"\u2665", "\u2660", "\u2663", "\u2666"};
 }
 
 class Card {
 
 private:
-    const int value;
-    Suit::Type suit;
+	const int value;
+	Suit::Type suit;
 
 public:
 
-    Card(int value, Suit::Type suit);
+	Card(int value, Suit::Type suit);
 
-    [[nodiscard]] int getValue() const;
+	[[nodiscard]] int getValue() const;
 
-    [[nodiscard]] Suit::Type getSuit();
+	[[nodiscard]] Suit::Type getSuit();
 
-    std::string toString();
+	std::string toString();
 };
 
 

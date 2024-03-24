@@ -5,10 +5,10 @@
 #include "Game.h"
 
 int main() {
-    auto players = new std::vector<PlayerType>();
-    for (int i = 0; i < 3; ++i)
-        players->push_back(LOCAL_CLI);
+	auto players = new std::vector<PlayerType>();
+	for (int i = 0; i < 3; ++i)
+		players->push_back(LOCAL_CLI);
 
-    Game game = Game(players);
-    game.play();
+	Game game = Game(players);
+	game.play();
 }

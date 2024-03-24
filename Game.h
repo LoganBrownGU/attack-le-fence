@@ -14,18 +14,23 @@
 class Game {
 
 public:
-    void play();
+	void play();
 
-    Game(std::vector<PlayerType> *players);
-    ~Game();
+	Game(std::vector<PlayerType> *players);
+
+	~Game();
 
 private:
-    Deck *const unusedPile, *const usedPile;
-    std::vector<Player *> *const players;
-    void handleAttack(Player *player);
-    void handleSwap(Player *player);
-    void handleStash(Player *player);
-    void cleanUp(Deck *playerHealth, Deck *newHealth, Deck *oldCards);
+	Deck *const unusedPile, *const usedPile;
+	std::vector<Player *> *const players;
+
+	void handleAttack(Player *player);
+
+	void handleSwap(Player *player);
+
+	void handleStash(Player *player);
+
+	void cleanUp(Deck *playerHealth, Deck *newHealth, Deck *oldCards);
 };
 
 
