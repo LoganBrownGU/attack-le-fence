@@ -45,6 +45,7 @@ void Game::play() {
 
     while (activePlayers.size() > 1) {
         for (const auto &player: activePlayers) {
+            system("clear");
             auto action = player->play();
 
             switch (action) {
@@ -63,7 +64,12 @@ void Game::play() {
 }
 
 void Game::handleAttack(Player *player) {
-    const auto &attackedPlayer = player->actionOnPlayer(players);
+    Player *attackedPlayer = player;
+    while (player == attackedPlayer) {
+        attackedPlayer = player->actionOnPlayer(players);
+        if (player == attackedPlayer)   std::cout << "You cannot attack yourself." << std::endl;
+    }
+
     bool useStashed = false;
     if (player->hasStashed()) useStashed = player->useStashed();
     const auto &attackingCard = this->unusedPile->pop_bottom();
