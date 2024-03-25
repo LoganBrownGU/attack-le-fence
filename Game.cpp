@@ -163,6 +163,10 @@ void Game::handleAttack(Player *player) {
 		cleanUp(attackedPlayer->getHealth(), &newHealth, &oldCards);
 		return;
 	}
+
+	// If this is reached then ¯\_(ツ)_/¯
+	fprintf(stderr, "Couldn't construct health.\n");
+	exit(-1);
 }
 
 void Game::handleSwap(Player *player) {
