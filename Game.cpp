@@ -43,6 +43,7 @@ void Game::play() {
 		player->decideCards(this->unusedPile->deal(3));
 	}
 
+	std::string sink;
 	while (activePlayers.size() > 1) {
 		for (const auto &player: activePlayers) {
 			if (!player->isAlive()) continue;
@@ -61,6 +62,10 @@ void Game::play() {
 					if (!player->hasStashed()) handleStash(player);
 					break;
 			}
+
+			std::cout << "Press enter to continue...";
+			std::cin.ignore();
+			std::cin.ignore();
 		}
 	}
 }
