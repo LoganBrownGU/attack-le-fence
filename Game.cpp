@@ -45,6 +45,8 @@ void Game::play() {
 
 	while (activePlayers.size() > 1) {
 		for (const auto &player: activePlayers) {
+			if (!player->isAlive()) continue;
+
 			system("clear");
 			auto action = player->play();
 
@@ -84,6 +86,13 @@ void Game::handleAttack(Player *player) {
 
 	std::cout << "You attack with: ";
 	std::cout << attackingCard->toString() << (useStashed ? " and " + stashedCard->toString() : "") << std::endl;
+
+	// Check if player is dead
+	if (health <= 0) {
+		attackedPlayer->kill();
+		std::cout << "Attacked player was eliminated\n";
+		return;
+	}
 
 	// Now decide how to make up the new health
 	auto newHealth = Deck();  // cards to make up new health

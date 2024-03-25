@@ -43,9 +43,14 @@ public:
 	// Returns true if player has a stashed card
 	bool hasStashed();
 
+	// Sets isAlive to false
+	void kill();
+
 	[[nodiscard]] Deck *getShield() const;
 
 	[[nodiscard]] Deck *getHealth() const;
+
+	[[nodiscard]] bool isAlive() const;
 
 	Player();
 
@@ -61,6 +66,8 @@ protected:
 	Deck *const health;
 	// ref to player's stashed card
 	Card *stashedCard;
+	// True if player is still alive
+	bool _isAlive;
 };
 
 

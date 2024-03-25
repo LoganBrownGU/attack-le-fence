@@ -24,7 +24,7 @@ bool Player::hasStashed() {
 }
 
 Player::Player() : shield(new Deck()),
-				   health(new Deck()), stashedCard(nullptr) {}
+				   health(new Deck()), stashedCard(nullptr), _isAlive(true) {}
 
 Deck *Player::getShield() const {
 	return shield;
@@ -32,4 +32,12 @@ Deck *Player::getShield() const {
 
 Deck *Player::getHealth() const {
 	return health;
+}
+
+void Player::kill() {
+	this->_isAlive = false;
+}
+
+bool Player::isAlive() const {
+	return this->_isAlive;
 }
