@@ -11,6 +11,7 @@
 
 class Deck {
 private:
+	/// @brief vector of all cards in the deck
 	std::vector<Card *> *const cards;
 
 public:
@@ -18,23 +19,26 @@ public:
 
 	~Deck();
 
-	/// @brief Takes n cards from the deck and returns them as a vector
+	/// @brief Takes n cards from the deck
+	/// @returns n cards as a vector
 	Deck *deal(int n);
 
-	/// @brief Returns the sum of all the values of the cards in the deck
+	/// @brief The sum of all the values of the cards in the deck
 	int totalValue();
 
-	/// @brief Returns card at position i
+	/// @brief The card at position i
 	Card *at(int i);
 
-	/// @brief Returns card at the top of the deck (if it was facing upwards) and removes it from the deck
+	/// @brief Removes card at the top of the deck (if it was facing upwards)
+	/// @returns The card that was removed
 	Card *pop_top();
 
-	/// @brief Returns card at the bottom of the deck (if it was facing upwards) and removes it from the deck
+	/// @brief Removes card at the bottom of the deck (if it was facing upwards)
+	/// @returns The card that was removed
 	Card *pop_bottom();
 
 	/// @brief Removes the card at index i
-	/// @brief Removed card
+	/// @returns Removed card
 	Card *pop(int i);
 
 	/// @brief Removes card c
@@ -44,10 +48,10 @@ public:
 	/// @brief Checks if the deck is clear
 	bool isEmpty();
 
-	/// @brief Returns number of cards in deck
+	/// @brief Number of cards in deck
 	size_t size();
 
-	/// @brief Returns a string representation of the deck
+	/// @brief A string representation of the deck
 	std::string toString();
 
 	/// @brief Places card on top of deck
@@ -95,10 +99,8 @@ public:
 		int index;
 	};
 
-	// Returns start of cards
 	Iterator begin() { return {0, cards}; }
 
-	// Returns element after end of cards
 	Iterator end() { return {static_cast<int>(cards->size()), cards}; }
 };
 

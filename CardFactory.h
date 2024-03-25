@@ -13,8 +13,13 @@
 
 class CardFactory {
 public:
+	/// @brief Creates a new standard 52-card deck
+	/// @returns A pointer to the deck
 	static Deck *generateNormalDeck();
 
+	/// @brief Checks if a deck contains a pair of numeric values
+	/// @returns The indices of the cards that match the criteria.
+	/// @returns {-1, -1} if values are not found.
 	static std::pair<int, int> containsSubset(Deck *set, std::pair<int, int> *subset);
 };
 

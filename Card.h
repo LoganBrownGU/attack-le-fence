@@ -23,7 +23,9 @@ namespace Suit {
 class Card {
 
 private:
+	/// @brief Numeric value of the card
 	const int value;
+	/// @brief The card's suit
 	Suit::Type suit;
 
 public:

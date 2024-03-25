@@ -18,6 +18,7 @@ public:
 	bool useStashed() override;
 
 private:
+	/// @brief Prints a string representation of the player's cards to stdout
 	void printCards();
 };
 
