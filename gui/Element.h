@@ -6,12 +6,13 @@
 #define ATTACK_LE_FENCE_ELEMENT_H
 
 
-#include <simple2d.h>
 #include <string>
 
 class Element {
 private:
-	int x, y, width, height;
+	/// @brief coordinates of four corners of element clockwise from top left
+	int x[4], y[4];
+	int width, height;
 	bool _isImage;
 	S2D_Color *colour;
 	S2D_Image *image;
