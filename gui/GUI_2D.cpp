@@ -36,5 +36,13 @@ void GUI_2D::add_element(Element *element) {
 }
 
 bool GUI_2D::remove_element(Element *element) {
-	GUI_2D::elements.push_back(element);
+	bool found_element = false;
+	for (int i = 0; i < GUI_2D::elements.size(); i++)
+	{
+		if (element == GUI_2D::elements.at(i)) {
+			GUI_2D::elements.erase(GUI_2D::elements.begin() + i);
+			found_element = true;
+		}
+	}
+	return found_element;
 }
