@@ -106,6 +106,12 @@
 		<Unit filename="/home/logan/Documents/Personal/cpp-projects/attack-le-fence/Game.h">
 			<Option target="attack_le_fence"/>
 		</Unit>
+		<Unit filename="/home/logan/Documents/Personal/cpp-projects/attack-le-fence/gui/GUI_2D.cpp">
+			<Option target="attack_le_fence"/>
+		</Unit>
+		<Unit filename="/home/logan/Documents/Personal/cpp-projects/attack-le-fence/gui/GUI_2D.h">
+			<Option target="attack_le_fence"/>
+		</Unit>
 		<Unit filename="/home/logan/Documents/Personal/cpp-projects/attack-le-fence/main.cpp">
 			<Option target="attack_le_fence"/>
 		</Unit>

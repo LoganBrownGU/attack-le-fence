@@ -18,6 +18,8 @@ add_executable(attack_le_fence main.cpp
         player/LocalCLIPlayer.h
         Deck.cpp
         Deck.h
+        gui/GUI_2D.cpp
+        gui/GUI_2D.h
 )
 
 target_link_libraries(attack_le_fence ${SIMPLE2D_IBS})
