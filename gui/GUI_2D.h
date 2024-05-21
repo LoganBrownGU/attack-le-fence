@@ -8,10 +8,16 @@
 
 #include <string>
 #include <simple2d.h>
+#include <vector>
+#include "Element.h"
 
 class GUI_2D {
 private:
 	static S2D_Window *window;
+	static S2D_Color *background_colour;
+
+	/// @brief vector of all elements in GUI
+	static std::vector<Element *> elements;
 
 	static void render();
 
@@ -19,6 +25,16 @@ private:
 public:
 	static void set_window(const std::string& title, int width, int height);
 	static void start();
+	static void set_background_colour(float r, float g, float b, float a);
+
+	/// @brief adds new element to the GUI
+	/// @param element element to be added
+	static void add_element(Element *element);
+
+	/// @brief removes all elements that match the given pointer from the array
+	/// @param element element to be removed
+	/// @returns true if element found
+	static bool remove_element(Element *element);
 };
 
 

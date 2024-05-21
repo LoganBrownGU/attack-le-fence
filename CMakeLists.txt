@@ -20,6 +20,10 @@ add_executable(attack_le_fence main.cpp
         Deck.h
         gui/GUI_2D.cpp
         gui/GUI_2D.h
+        gui/Button.cpp
+        gui/Button.h
+        gui/Element.cpp
+        gui/Element.h
 )
 
 target_link_libraries(attack_le_fence ${SIMPLE2D_IBS})
