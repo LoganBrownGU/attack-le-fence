@@ -10,6 +10,17 @@ S2D_Color *GUI_2D::background_colour = nullptr;
 
 void GUI_2D::render() {
 	S2D_GL_Clear(*GUI_2D::background_colour);
+
+	for (const auto &element: GUI_2D::elements)
+	{
+		if (element->isImage())
+		{
+			// todo render image
+		} else
+		{
+			
+		}
+	}
 }
 
 void GUI_2D::start() {
