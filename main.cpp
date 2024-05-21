@@ -9,7 +9,7 @@
 
 
 int main() {
-	GUI_2D::set_window("dehfis", 1000, 500);
+	GUI_2D::set_window("AAAAAAAAAHHHHHHHHHHHHHHHHHH", 1000, 500);
 	std::thread gui_thread([] {
 		GUI_2D::start();
 	});
