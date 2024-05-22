@@ -13,7 +13,7 @@ void GUI_2D::render() {
 	{
 		if (element->isImage())
 		{
-			// todo render image
+			S2D_DrawImage(element->getImage());
 		} else
 		{
 			S2D_DrawQuad(

@@ -34,6 +34,9 @@ Element::Element(float x, float y, float width, float height, const std::string 
 	this->height = height;
 
 	this->image = S2D_CreateImage(img_path.c_str());
+	this->image->x = x; 		this->image->y = y;
+	this->image->width = width; this->image->height = height;
+
 	this->colour = nullptr;
 }
 

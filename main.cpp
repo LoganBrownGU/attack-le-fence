@@ -11,7 +11,7 @@
 int main() {
 	GUI_2D::set_window("Attack le Fence", 1000, 500);
 	GUI_2D::set_background_colour(1, 1, 1, 1);
-	GUI_2D::add_element(new Element(0, 0, 100, 100, 1, 0, 0, 1));
+	GUI_2D::add_element(new Element(0, 0, 100, 100, "../assets/test/colour.png"));
 	std::thread gui_thread([] {
 		GUI_2D::start();
 	});
