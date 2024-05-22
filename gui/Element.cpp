@@ -5,7 +5,7 @@
 #include <simple2d.h>
 #include "Element.h"
 
-Element::Element(int x, int y, int width, int height, float r, float g, float b, float a) {
+Element::Element(float x, float y, float width, float height, float r, float g, float b, float a) {
 	this->_isImage = false;
 	this->x[0] = x; 		this->y[0] = y;
 	this->x[1] = x + width; this->y[1] = y;
@@ -23,7 +23,7 @@ Element::Element(int x, int y, int width, int height, float r, float g, float b,
 	this->image = nullptr;
 }
 
-Element::Element(int x, int y, int width, int height, const std::string &img_path) {
+Element::Element(float x, float y, float width, float height, const std::string &img_path) {
 	this->_isImage = true;
 	this->x[0] = x; 		this->y[0] = y;
 	this->x[1] = x + width; this->y[1] = y;
@@ -37,19 +37,19 @@ Element::Element(int x, int y, int width, int height, const std::string &img_pat
 	this->colour = nullptr;
 }
 
-int Element::getX() const {
-	return x[0];
+const float *Element::getX() const {
+	return x;
 }
 
-int Element::getY() const {
-	return y[0];
+const float *Element::getY() const {
+	return y;
 }
 
-int Element::getWidth() const {
+float Element::getWidth() const {
 	return width;
 }
 
-int Element::getHeight() const {
+float Element::getHeight() const {
 	return height;
 }
 

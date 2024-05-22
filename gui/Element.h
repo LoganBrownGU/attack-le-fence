@@ -11,23 +11,23 @@
 class Element {
 private:
 	/// @brief coordinates of four corners of element clockwise from top left
-	int x[4], y[4];
-	int width, height;
+	float x[4], y[4];
+	float width, height;
 	bool _isImage;
 	S2D_Color *colour;
 	S2D_Image *image;
 
 public:
-	Element(int x, int y, int width, int height, float r, float g, float b, float a);
-	Element(int x, int y, int width, int height, const std::string& img_path);
+	Element(float x, float y, float width, float height, float r, float g, float b, float a);
+	Element(float x, float y, float width, float height, const std::string& img_path);
 
-	int getX() const;
+	const float *getX() const;
 
-	int getY() const;
+	const float *getY() const;
 
-	int getWidth() const;
+	float getWidth() const;
 
-	int getHeight() const;
+	float getHeight() const;
 
 	bool isImage() const;
 

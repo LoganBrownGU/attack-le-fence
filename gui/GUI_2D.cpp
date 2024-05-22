@@ -16,7 +16,12 @@ void GUI_2D::render() {
 			// todo render image
 		} else
 		{
-
+			S2D_DrawQuad(
+					element->getX()[0], element->getY()[0], element->getColour()->r, element->getColour()->g, element->getColour()->b, element->getColour()->a,
+					element->getX()[1], element->getY()[1], element->getColour()->r, element->getColour()->g, element->getColour()->b, element->getColour()->a,
+					element->getX()[2], element->getY()[2], element->getColour()->r, element->getColour()->g, element->getColour()->b, element->getColour()->a,
+					element->getX()[3], element->getY()[3], element->getColour()->r, element->getColour()->g, element->getColour()->b, element->getColour()->a
+					);
 		}
 	}
 }
