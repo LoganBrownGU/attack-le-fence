@@ -9,7 +9,8 @@
 
 
 int main() {
-	GUI_2D::set_window("AAAAAAAAAHHHHHHHHHHHHHHHHHH", 1000, 500);
+	GUI_2D::set_window("Attack le Fence", 1000, 500);
+	GUI_2D::set_background_colour(1, 1, 1, 1);
 	std::thread gui_thread([] {
 		GUI_2D::start();
 	});

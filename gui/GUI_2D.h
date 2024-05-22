@@ -14,7 +14,6 @@
 class GUI_2D {
 private:
 	static S2D_Window *window;
-	static S2D_Color *background_colour;
 
 	/// @brief vector of all elements in GUI
 	static std::vector<Element *> elements;

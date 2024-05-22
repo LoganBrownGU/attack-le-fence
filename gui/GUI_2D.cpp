@@ -6,12 +6,9 @@
 #include "GUI_2D.h"
 
 S2D_Window *GUI_2D::window = nullptr;
-S2D_Color *GUI_2D::background_colour = nullptr;
 std::vector<Element *> GUI_2D::elements;
 
 void GUI_2D::render() {
-	S2D_GL_Clear(*GUI_2D::background_colour);
-
 	for (const auto &element: GUI_2D::elements)
 	{
 		if (element->isImage())
@@ -36,13 +33,10 @@ void GUI_2D::set_window(const std::string& title, int width, int height) {
 }
 
 void GUI_2D::set_background_colour(float r, float g, float b, float a) {
-	delete GUI_2D::background_colour;
-
-	GUI_2D::background_colour = new S2D_Color();
-	GUI_2D::background_colour->r = r;
-	GUI_2D::background_colour->g = g;
-	GUI_2D::background_colour->b = b;
-	GUI_2D::background_colour->a = a;
+	GUI_2D::window->background.r = r;
+	GUI_2D::window->background.g = g;
+	GUI_2D::window->background.b = b;
+	GUI_2D::window->background.a = a;
 }
 
 void GUI_2D::add_element(Element *element) {
