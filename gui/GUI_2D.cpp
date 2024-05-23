@@ -35,6 +35,7 @@ void GUI_2D::set_window(const std::string& title, int width, int height) {
 	char *c_title = (char *) malloc(title.length() + 1);
 	strncpy(c_title, title.c_str(), title.length());
 	GUI_2D::window = S2D_CreateWindow(c_title, width, height, nullptr, GUI_2D::render, 0);
+	GUI_2D::window->on_mouse = GUI_2D::handle_click;
 }
 
 void GUI_2D::set_background_colour(float r, float g, float b, float a) {
@@ -58,4 +59,29 @@ bool GUI_2D::remove_element(Element *element) {
 		}
 	}
 	return found_element;
+}
+
+void GUI_2D::handle_click(S2D_Event e) {
+	if (e.type != S2D_MOUSE_UP) return;
+
+	switch (e.button) {
+		case S2D_MOUSE_LEFT:
+			std::cout << "left click\n";
+			GUI_2D::handle_left_click(&e);
+			break;
+		case S2D_MOUSE_RIGHT:
+			std::cout << "right click\n";
+			break;
+	}
+}
+
+void GUI_2D::handle_left_click(S2D_Event *e) {
+	for (const auto &element: GUI_2D::elements)
+	{
+		if (	e->x > element->getX()[0] && e->x < element->getX()[0] + element->getWidth()
+			 && e->y > element->getY()[0] && e->y < element->getY()[0] + element->getHeight())
+		{
+			std::cout << "here\n";
+		}
+	}
 }

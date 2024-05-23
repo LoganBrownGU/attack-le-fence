@@ -5,7 +5,6 @@
 #ifndef ATTACK_LE_FENCE_ELEMENT_H
 #define ATTACK_LE_FENCE_ELEMENT_H
 
-
 #include <string>
 
 class Element {

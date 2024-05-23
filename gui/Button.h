@@ -5,9 +5,11 @@
 #ifndef ATTACK_LE_FENCE_BUTTON_H
 #define ATTACK_LE_FENCE_BUTTON_H
 
+#include "Element.h"
 
-class Button {
-
+class Button : public Element {
+public:
+	virtual void on_click();
 };
 
 

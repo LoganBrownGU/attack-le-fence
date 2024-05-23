@@ -19,7 +19,8 @@ private:
 	static std::vector<Element *> elements;
 
 	static void render();
-
+	static void handle_click(S2D_Event e);
+	static void handle_left_click(S2D_Event *e);
 
 public:
 	static void set_window(const std::string& title, int width, int height);
